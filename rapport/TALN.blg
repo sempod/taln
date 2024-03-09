@@ -1,0 +1,56 @@
+This is BibTeX, Version 0.99d (TeX Live 2022/dev/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: TALN.aux
+The style file: unsrt.bst
+Database file #1: bibliographie.bib
+Warning--entry type for "NLP-Wikipedia" isn't style-file defined
+--line 2 of file bibliographie.bib
+Warning--entry type for "A-Brief-History-of-NLP" isn't style-file defined
+--line 10 of file bibliographie.bib
+Warning--entry type for "NLP-Stanford-website" isn't style-file defined
+--line 20 of file bibliographie.bib
+Warning--I didn't find a database entry for "QM-chatbots-and-no"
+Warning--I didn't find a database entry for "QM-NN-learn-like-humans"
+Warning--I didn't find a database entry for "QM-tiny-language-models"
+You've used 4 entries,
+            1791 wiz_defined-function locations,
+            471 strings with 4247 characters,
+and the built_in function-call counts, 494 in all, are:
+= -- 32
+> -- 16
+< -- 0
++ -- 8
+- -- 4
+* -- 8
+:= -- 77
+add.period$ -- 8
+call.type$ -- 4
+change.case$ -- 4
+chr.to.int$ -- 0
+cite$ -- 4
+duplicate$ -- 20
+empty$ -- 73
+format.name$ -- 4
+if$ -- 113
+int.to.chr$ -- 0
+int.to.str$ -- 4
+missing$ -- 0
+newline$ -- 19
+num.names$ -- 4
+pop$ -- 28
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 16
+stack$ -- 0
+substring$ -- 0
+swap$ -- 4
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 4
+width$ -- 5
+write$ -- 34
+(There were 6 warnings)

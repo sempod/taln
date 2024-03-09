@@ -1,0 +1,39 @@
+\begin{thebibliography}{1}
+
+\bibitem{CLRS09}
+T.H Cormen, C.~E. Leiserson, R.L. Rivest, and C.~Stein.
+\newblock {\em Algorithmique - 3ème édition - Cours avec 957 exercices et 158
+  problèmes}.
+\newblock Dunod, 2010.
+
+\bibitem{CLRS10}
+T.H Cormen, C.~E. Leiserson, R.L. Rivest, and C.~Stein.
+\newblock {\em Introduction to Algorithms, Third Edition}.
+\newblock The MIT Press, 2009.
+
+\bibitem{Xuo92}
+N.H. Xuong.
+\newblock {\em Math\'ematiques discr\`etes et informatique}.
+\newblock Masson, 1992.
+
+\bibitem{CGH97}
+I.~Charon, A.~Germa, and O.~Hudry.
+\newblock {\em Méthodes d'optimisation combinatoire}.
+\newblock Masson, 1997.
+
+\bibitem{GM09}
+Michel Gondran and Michel Minoux.
+\newblock {\em Graphes et algorithmes}.
+\newblock Tec \& Doc Lavoisier, 2009.
+
+\bibitem{Even79}
+Shimon Even.
+\newblock {\em Graph Algorithms}.
+\newblock Computer Science Press, 1979.
+
+\bibitem{Saka84}
+Michel Sakarovitch.
+\newblock {\em Graphes et programmation linéaire}.
+\newblock Hermann, 1984.
+
+\end{thebibliography}

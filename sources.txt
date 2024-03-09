@@ -1,0 +1,45 @@
+https://en.wikipedia.org/wiki/Natural_language_processing
+  Utiliser cette page wiki comme chronologie de mon rapport.
+  Ca y est bien divisé en trois catégories.
+    1. Symbolic NLP 1950s - 1990s
+    2. Statistical NLP 1990s - 2010s
+    3. Neural NLP 2010s - present
+    
+https://dept-info.labri.fr/%7Ebaudon/Licence/HistoireInfo/HistoireInfo.html
+https://www.dataversity.net/a-brief-history-of-natural-language-processing-nlp/
+https://cs.stanford.edu/people/eroberts/courses/soco/projects/2004-05/nlp/overview_history.html
+
+HISTOIRE 
+Turing test
+John Searle's Chinese room experiment
+The Georgetown experiment (1954)
+ALPAC report (1966)
+SHRDLU
+ELIZA
+1970s ontologies (voir le site wiki)
+HPSG
+generative grammar
+Lesk algorithm
+Rhetorical Structure Theory
+Racter and Jabberwacky ?
+"statistical machine translations systems" (1980s)
+...
+
+WORD2VEC APPLICATIONS SOURCES
+1] M. Baroni et. al., Don’t count, predict! A systematic comparison of context-counting vs. context-predicting semantic vectors, 2014.
+[2] V. Tshitoyan et. al., Unsupervised word embeddings capture latent knowledge from materials science literature, 2019.
+[3] A. Caliskan et. al., Semantics derived automatically from language corpora contain human-like biases, 2017.
+[4] D. Gligorijevic et. al., Large-Scale Discovery of Disease-Disease and Disease-Gene Associations, 2016.
+[5] M. Grbovic & H. Cheng, Real-time personalization using embeddings for search ranking at Airbnb, 2018.
+[6] J. Wang et. al., Billion-scale commodity embedding for e-commerce recommendation in Alibaba, 2018.
+[7] X. Zhao et. al., Learning item-interaction embeddings for user recommendations, 2018.
+A VOIR: CBOW, Skip-gram
+https://www.quora.com/What-are-some-practical-use-of-word2vec
+https://www.youtube.com/watch?v=L3D0JEA1Jdc
+
+DEEPLEARNING
+https://france.devoteam.com/paroles-dexperts/attention-is-all-you-need-comprendre-le-traitement-naturel-du-langage-avec-les-modeles-transformers/
+https://towardsdatascience.com/transformers-89034557de14
+https://france.devoteam.com/paroles-dexperts/lstm-transformers-gpt-bert-guide-des-principales-techniques-en-nlp/
+
+

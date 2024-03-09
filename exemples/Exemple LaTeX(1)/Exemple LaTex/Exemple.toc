@@ -1,0 +1,44 @@
+\select@language {french}
+\contentsline {chapter}{\numberline {1}El\IeC {\'e}ments de th\IeC {\'e}orie des Graphes}{2}
+\contentsline {section}{\numberline {1.1}D\IeC {\'e}finitions}{2}
+\contentsline {subsection}{\numberline {1.1.1}Graphe non orient\IeC {\'e}}{2}
+\contentsline {subsubsection}{Relations dans un graphe non orient\IeC {\'e}}{2}
+\contentsline {subsubsection}{Multigraphe et graphe simple}{3}
+\contentsline {subsubsection}{D\IeC {\'e}gr\IeC {\'e}}{3}
+\contentsline {subsubsection}{Repr\IeC {\'e}sentation graphique}{3}
+\contentsline {subsection}{\numberline {1.1.2}Graphe orient\IeC {\'e}}{4}
+\contentsline {subsection}{\numberline {1.1.3}Propri\IeC {\'e}t\IeC {\'e}s \IeC {\'e}l\IeC {\'e}mentaires}{5}
+\contentsline {subsection}{\numberline {1.1.4}Graphes non \IeC {\'e}tiquet\IeC {\'e}s}{6}
+\contentsline {subsubsection}{Isomorphisme de graphes}{6}
+\contentsline {subsubsection}{Exemple}{6}
+\contentsline {subsection}{\numberline {1.1.5}Cha\IeC {\^\i }nes}{6}
+\contentsline {subsubsection}{Notions non orient\IeC {\'e}es}{6}
+\contentsline {subsubsection}{Notions orient\IeC {\'e}es}{7}
+\contentsline {subsubsection}{Exemples}{7}
+\contentsline {subsection}{\numberline {1.1.6}Connexit\IeC {\'e}}{7}
+\contentsline {subsubsection}{D\IeC {\'e}finitions}{7}
+\contentsline {subsubsection}{Arbre}{7}
+\contentsline {section}{\numberline {1.2}Sous-graphe}{8}
+\contentsline {paragraph}{Exemples}{9}
+\contentsline {section}{\numberline {1.3}Zoologie}{9}
+\contentsline {chapter}{\numberline {2}Algorithmes}{10}
+\contentsline {section}{\numberline {2.1}Parcours de graphes}{10}
+\contentsline {subsection}{\numberline {2.1.1}Parcours en largeur}{10}
+\contentsline {subsubsection}{Complexit\IeC {\'e}}{11}
+\contentsline {subsection}{\numberline {2.1.2}Parcours en profondeur}{11}
+\contentsline {subsection}{\numberline {2.1.3}Applications du parcours en profondeur}{11}
+\contentsline {subsubsection}{Tri topologique}{11}
+\contentsline {subsubsection}{Composantes fortement connexes}{12}
+\contentsline {section}{\numberline {2.2}Arbre de poids minimum}{12}
+\contentsline {subsection}{\numberline {2.2.1}Algorithme de Kruskal}{12}
+\contentsline {subsection}{\numberline {2.2.2}Algorithme de Prim}{12}
+\contentsline {section}{\numberline {2.3}Plus court chemin}{13}
+\contentsline {subsection}{\numberline {2.3.1}Plus court chemin entre deux sommets}{13}
+\contentsline {subsubsection}{Dijkstra}{13}
+\contentsline {subsubsection}{Bellman}{13}
+\contentsline {subsubsection}{Algorithme de Ford}{13}
+\contentsline {subsection}{\numberline {2.3.2}Plus courts chemins entre toutes paires de sommets}{15}
+\contentsline {subsubsection}{Algorithme de Floyd}{15}
+\contentsline {subsubsection}{Algorithme de Warshall}{15}
+\contentsline {section}{\numberline {2.4}Flots}{17}
+\contentsline {subsection}{\numberline {2.4.1}Algorithme de Ford et Fulkerson}{17}

@@ -1,0 +1,7 @@
+\babel@toc {french}{}\relax 
+\contentsline {chapter}{\numberline {1}Introduction}{1}{}%
+\contentsline {chapter}{\numberline {2}Brève histoire du TALN}{2}{}%
+\contentsline {chapter}{\numberline {3}Approche neuronale}{10}{}%
+\contentsline {chapter}{\numberline {4}Word2Vec}{11}{}%
+\contentsline {chapter}{\numberline {5}Deep Learning pour le TALN}{12}{}%
+\contentsline {chapter}{\numberline {6}Conclusion}{13}{}%
