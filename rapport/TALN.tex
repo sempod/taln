@@ -9,6 +9,8 @@
 \title{Traitement automatique du langage naturel}
 \author{Václav Gregor}
 \date{\today}
+\newtheorem{hyp}{Hyp}[section]
+
 \begin{document}
 
 \maketitle
@@ -403,7 +405,105 @@ détail que j'ai atteint dans les deux cas est à peu près le même. }
   \section*{Approche neuronale}
 
 \chapter{Approche neuronale}
-\chapter{Word2Vec}
+\chapter{Word embedding}
+  \section*{Principe}
+Le word embedding (en français : vectorisation de mots, plongement lexical, ou bien enchâssement de mots)
+est la notion de représenter un mot par un vecteur, le plus souvent un vecteur réel. C'est assez simple 
+comme idée, mais quel est son intérêt ? 
+
+Pour expliquer l'idée, je vais utiliser utiliser un exemple qui vient de 
+\textit{Understanding word vectors} par Allison Parish. Considérons la table suivante qui décrit quelques 
+animaux en fonction de leur mignonnerie et leur taille. 
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.6\textwidth]{animal-table.png}
+  \caption{This is an example image.}
+  \label{fig:example}
+\end{figure}
+
+Regardons ce que ça donne en tant qu'espace de vecteurs 2D. 
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.6\textwidth]{animal-space.png}
+  \caption{This is an example image.}
+  \label{fig:example}
+\end{figure}
+
+On a alors associé un objet mathématique (un vecteur 2D) à chaque animal de notre table, d'une façon
+assez arbitraire certes, mais pourtant intuitive. On peut commencer à raisonner sur les animaux en 
+utilisant les notions de l'algébre linéaire. Par exemple avec la distance euclidienne, on peut facilement 
+vérifier que le cheval et le dauphin sont quasiment les mêmes, quant à nos deux caractéristiques 
+(assez mignons et grands). Pareil pour le chiot et le chatons (petits et très mignons), ou bien la 
+tarantule et le moustique (très petits et pas du tout mignons). On peut aussi faire des opérations sur 
+les vecteurs. Prenons la différence entre le chaton et la poule et ajoutons-la à la tarantule. 
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.6\textwidth]{animal-space-dif.png}
+  \caption{This is an example image.}
+  \label{fig:example}
+\end{figure}
+
+On observe que la pointe du vecteur bleu est le plus près du vecteur qui représent le hamster.
+Mathématiquement, cela s'écrirait :
+
+\begin{align*}
+  \vec{c} - \vec{p} + \vec{t} \approx \vec{h} 
+\end{align*}
+
+Et en français : 
+
+\begin{center}
+  Les tarentules sont aux hamsters ce que les poules sont aux chatons. 
+\end{center}
+
+C'est-à-dire un animal un peu plus petit et beaucoup moins mignon, ce qui est assez 
+correcte. 
+
+Qu'est-ce qui vient de se passer ? On a fait du word embedding sur les 
+mots d'animaux en fonction de leur mignonnerie et leur taille, et par la suite on utilisé 
+cette représenation pour analyser la sémantique de ces mots. On a commencé avec une façon hyper simple d'associer un 
+vecteur à chaque mot de notre exemple. On a ensuite regardé la relation entre deux mots
+(la poule et le chaton) à l'aide des opérations sur les vecteurs, et on a utilisée cette 
+information pour déduire une \textbf{rélation sémantique} entre deux mots différents
+(la tarantule et le hamster). Incroyablement simple et puissant en même temps.
+
+Dans les applications réelles des word embeddings, le principe reste le même, mais le processus devient plus 
+compliqué. Les mots à l'entrée vont être beaucoup plus nombreux - on peut imaginer un ensemble 
+des centaines de milliers de mots. Ensuite, comment fait-on pour associer un vecteur à chacun
+de ces mots ? Dans l'exemple précédent, on a attribué des valeur arbitraires à chaque mot 
+manuellement, ce qui ne sera plus possible à cause de leur quantité. Heureusement qu'il y a la 
+hypothèse distributionnelle. 
+
+\begin{hyp}[hypothèse distributionnelle]
+  La sémantique d'un mot est déterminée par son contexte - les mots qui l'entourent dans 
+  le texte. 
+\end{hyp}
+
+Cette hypothèse dûe à J. R. Firth nous dit que ce qui est détermine le sémantique d'un mot, 
+ce sont les mots qui se trouvent à ces côtés dans la phrase. Par exemple, considérons les mots 
+beau, froid et chaud, qui peuvent tous êtres utilisés pour décrire le temps. Regardons des exemples de 
+phrases qui utilisent ces mots : 
+
+\begin{center}
+  Il a fait \underline{bien} \textbf{froid} \underline{hier}. \\
+  Par contre, il va faire \underline{hyper} \textbf{chaud} \underline{aujourd'hui}. \\
+  Il fera \underline{très} \textbf{beau} \underline{demain}! \\
+  Est-ce qu'il va faire \underline{très} \textbf{froid} \underline{mardi} ?
+\end{center}
+
+Il s'agit des phrases tout à fait naturelles, et on peut déjà observer que les trois mots 
+ont une tendance à se trouver entre un adverbe (bien, hyper, très) et un mot indiquant 
+un jour (hier, aujourd'hui, demain, mardi). Par la hypothèse distributionnelle, ces trois mots 
+devraient avoir une sémantique similaire, car ils ont le même 
+contexte. Ceci est tout à fait vrai, tous les trois mots sont utilisés pour décrire le temps. 
+Une telle sémantique s'appelle alors comme la hypothèse - distributionnelle. 
+
+Cette approche nous permettra d'assiocer des vecteurs aux mots d'un corpus de taille 
+arbitraire, et en plus automatiquement. Regardons sur un exemple.
+
 \chapter{Deep Learning pour le TALN}
 \chapter{Conclusion}
 
