@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.17)  24 MAR 2024 14:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.17)  24 MAR 2024 17:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -505,59 +505,55 @@ Overfull \hbox (3.11049pt too wide) in paragraph at lines 350--359
 
 [8] [9]
 Chapitre 3.
-[10
-
-]
-Chapitre 4.
-<animal-table.png, id=60, 355.3275pt x 327.2225pt>
+<animal-table.png, id=56, 355.3275pt x 327.2225pt>
 File: animal-table.png Graphic file (type png)
 <use animal-table.png>
-Package pdftex.def Info: animal-table.png  used on input line 421.
+Package pdftex.def Info: animal-table.png  used on input line 419.
 (pdftex.def)             Requested size: 216.0022pt x 198.92139pt.
-<animal-space.png, id=62, 523.9575pt x 524.96124pt>
+<animal-space.png, id=58, 523.9575pt x 524.96124pt>
 File: animal-space.png Graphic file (type png)
 <use animal-space.png>
-Package pdftex.def Info: animal-space.png  used on input line 430.
+Package pdftex.def Info: animal-space.png  used on input line 428.
 (pdftex.def)             Requested size: 216.0022pt x 216.41301pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[11
+[10
 
  <./animal-table.png>]
-<animal-space-dif.png, id=67, 537.00626pt x 529.98pt>
+<animal-space-dif.png, id=64, 537.00626pt x 529.98pt>
 File: animal-space-dif.png Graphic file (type png)
 <use animal-space-dif.png>
-Package pdftex.def Info: animal-space-dif.png  used on input line 445.
+Package pdftex.def Info: animal-space-dif.png  used on input line 443.
 (pdftex.def)             Requested size: 216.0022pt x 213.177pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[12 <./animal-space.png>] [13 <./animal-space-dif.png>]
-Overfull \hbox (71.99918pt too wide) in paragraph at lines 518--549
+[11 <./animal-space.png>] [12 <./animal-space-dif.png>]
+Overfull \hbox (71.99918pt too wide) in paragraph at lines 516--547
 [][] 
  []
 
-[14]
-<code1.png, id=79, 676.5275pt x 906.38625pt>
+[13]
+<code1.png, id=76, 676.5275pt x 906.38625pt>
 File: code1.png Graphic file (type png)
 <use code1.png>
-Package pdftex.def Info: code1.png  used on input line 599.
+Package pdftex.def Info: code1.png  used on input line 597.
 (pdftex.def)             Requested size: 360.0pt x 482.3325pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[15] [16 <./code1.png>]
-Chapitre 5.
-[17
+[14] [15 <./code1.png>]
+Chapitre 4.
+[16
 
 ]
-Chapitre 6.
-(./TALN.bbl [18
+Chapitre 5.
+(./TALN.bbl [17
 
-]) [19
+]) [18
 
 ] (./TALN.aux)
 
@@ -570,16 +566,16 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  15488 strings out of 479342
  309739 string characters out of 5869178
- 599503 words of memory out of 5000000
+ 598503 words of memory out of 5000000
  33239 multiletter control sequences out of 15000+600000
  477187 words of font info for 55 fonts, out of 8000000 for 9000
  473 hyphenation exceptions out of 8191
  115i,11n,118p,8362b,860s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on TALN.pdf (22 pages, 406894 bytes).
+Output written on TALN.pdf (21 pages, 406260 bytes).
 PDF statistics:
- 152 PDF objects out of 1000 (max. 8388607)
- 93 compressed objects within 1 object stream
+ 149 PDF objects out of 1000 (max. 8388607)
+ 91 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  33 words of extra memory for PDF output out of 10000 (max. 10000000)
 

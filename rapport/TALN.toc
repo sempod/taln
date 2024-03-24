@@ -1,7 +1,6 @@
 \babel@toc {french}{}\relax 
 \contentsline {chapter}{\numberline {1}Introduction}{1}{}%
 \contentsline {chapter}{\numberline {2}Brève histoire du TALN}{2}{}%
-\contentsline {chapter}{\numberline {3}Approche neuronale}{10}{}%
-\contentsline {chapter}{\numberline {4}Word embedding}{11}{}%
-\contentsline {chapter}{\numberline {5}Deep Learning pour le TALN}{17}{}%
-\contentsline {chapter}{\numberline {6}Conclusion}{18}{}%
+\contentsline {chapter}{\numberline {3}Word embedding}{10}{}%
+\contentsline {chapter}{\numberline {4}Deep Learning pour le TALN}{16}{}%
+\contentsline {chapter}{\numberline {5}Conclusion}{17}{}%

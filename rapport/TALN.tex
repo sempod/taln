@@ -405,15 +405,13 @@ détail que j'ai atteint dans les deux cas est à peu près le même. }
   \section*{Approche statistique}
   \section*{Approche neuronale}
 
-\chapter{Approche neuronale}
 \chapter{Word embedding}
-  \section*{Principe}
+  \section*{Principe sur un exemple simple}
 Le word embedding (en français : vectorisation de mots, plongement lexical, ou bien enchâssement de mots)
-est la notion de représenter un mot par un vecteur, le plus souvent un vecteur réel. C'est assez simple 
-comme idée, mais quel est son intérêt ? 
+est la notion de représenter un mot par un vecteur, le plus souvent un vecteur réel.
 
-Pour expliquer l'idée, je vais utiliser utiliser un exemple qui vient de 
-\textit{Understanding word vectors} par Allison Parish. Considérons la table suivante qui décrit quelques 
+Pour expliquer l'intérêt de cette idée, je vais utiliser un exemple qui vient de 
+\textit{Understanding word vectors} de Allison Parish. Considérons la table suivante qui décrit quelques 
 animaux en fonction de leur mignonnerie et leur taille. 
 
 \begin{figure}[h]
@@ -432,9 +430,9 @@ Regardons ce que ça donne en tant qu'espace de vecteurs 2D.
   \label{fig:example}
 \end{figure}
 
-On a alors associé un objet mathématique (un vecteur 2D) à chaque animal de notre table, d'une façon
-assez arbitraire certes, mais pourtant intuitive. On peut commencer à raisonner sur les animaux en 
-utilisant les notions de l'algébre linéaire. Par exemple avec la distance euclidienne, on peut facilement 
+On a associé un objet mathématique (un vecteur 2D) à chaque animal de notre table, certes d'une façon
+assez arbitraire, mais pourtant intuitive. Le plus important : on peut maintenant raisonner sur les animaux en 
+utilisant les notions de l'algèbre linaire. Par exemple, avec la distance euclidienne, on peut facilement 
 vérifier que le cheval et le dauphin sont quasiment les mêmes, quant à nos deux caractéristiques 
 (assez mignons et grands). Pareil pour le chiot et le chatons (petits et très mignons), ou bien la 
 tarantule et le moustique (très petits et pas du tout mignons). On peut aussi faire des opérations sur 
@@ -464,13 +462,13 @@ C'est-à-dire un animal un peu plus petit et beaucoup moins mignon, ce qui est a
 correcte. 
 
 Qu'est-ce qui vient de se passer ? On a fait du word embedding sur les 
-mots d'animaux en fonction de leur mignonnerie et leur taille, et par la suite on utilisé 
-cette représenation pour analyser la sémantique de ces mots. On a commencé avec une façon hyper simple d'associer un 
-vecteur à chaque mot de notre exemple. On a ensuite regardé la relation entre deux mots
-(la poule et le chaton) à l'aide des opérations sur les vecteurs, et on a utilisée cette 
-information pour déduire une \textbf{rélation sémantique} entre deux mots différents
+mots d'animaux, ce qui nous a permis d'analyser leur sémantique par la suite : 
+on commence en associant un vecteur à chaque mot en fonction de la mignonnerie et la 
+taille de l'animal, on regarde la relation mathématique entre deux mots
+(la poule et le chaton), et on utilise cette information pour déduire une \textbf{rélation sémantique} entre deux mots différents
 (la tarantule et le hamster). Incroyablement simple et puissant en même temps.
 
+\section*{Sémantique distributionnelle}
 Dans les applications réelles des word embeddings, le principe reste le même, mais le processus devient plus 
 compliqué. Les mots à l'entrée vont être beaucoup plus nombreux - on peut imaginer un ensemble 
 des centaines de milliers de mots. Ensuite, comment fait-on pour associer un vecteur à chacun
@@ -483,9 +481,9 @@ hypothèse distributionnelle.
   le texte. 
 \end{hyp}
 
-Cette hypothèse dûe à J. R. Firth nous dit que ce qui est détermine le sémantique d'un mot, 
-ce sont les mots qui se trouvent à ces côtés dans la phrase. Par exemple, considérons les mots 
-beau, froid et chaud, qui peuvent tous êtres utilisés pour décrire le temps. Regardons des exemples de 
+Cette hypothèse dûe à J. R. Firth nous dit que ce qui détermine le sémantique d'un mot 
+sont les mots qui se trouvent à ses côtés dans la phrase. Prenons les mots 
+beau, froid et chaud et regardons des exemples de 
 phrases qui utilisent ces mots : 
 
 \begin{center}
@@ -503,11 +501,11 @@ contexte. Ceci est tout à fait vrai, tous les trois mots sont utilisés pour d�
 Une telle sémantique s'appelle alors comme la hypothèse - distributionnelle. 
 
 Cette approche nous permettra d'assiocer des vecteurs aux mots d'un corpus de taille 
-arbitraire, et en plus automatiquement. Regardons sur un exemple. Là phrase utilisée sera :
+arbitraire, et en plus automatiquement. Regardons sur un exemple :
 \begin{center}
   It was the best of times, it was the worst of times.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
 \end{center}
-Et comme le contexte, on considérera juste le voisin gauche et le voisin droite. La 
+Comme le contexte, on considérera juste le voisin gauche et le voisin droite. La 
 première ligne de la table suivante contient tous les contextes possibles (nb : même si 
 "it was the" a deux occurrences dans notre phrase, le contexte correspondant "it \textunderscore \ the" 
 ne se trouve qu'une fois dans la table). La première colonne contient tous les mots sans répétition.
