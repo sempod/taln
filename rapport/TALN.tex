@@ -1,8 +1,9 @@
-\documentclass[11pt,a4paper]{report}
+\documentclass[11pt, a4paper]{report}
 \usepackage[francais]{babel}
 \usepackage{dirtytalk}
 \usepackage{amsmath}
 \usepackage{todonotes}
+\usepackage{tabularx}
 
 \newcommand{\TALN}{traitement automatique du langage naturel}
 
@@ -502,7 +503,104 @@ contexte. Ceci est tout à fait vrai, tous les trois mots sont utilisés pour d�
 Une telle sémantique s'appelle alors comme la hypothèse - distributionnelle. 
 
 Cette approche nous permettra d'assiocer des vecteurs aux mots d'un corpus de taille 
-arbitraire, et en plus automatiquement. Regardons sur un exemple.
+arbitraire, et en plus automatiquement. Regardons sur un exemple. Là phrase utilisée sera :
+\begin{center}
+  It was the best of times, it was the worst of times.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+\end{center}
+Et comme le contexte, on considérera juste le voisin gauche et le voisin droite. La 
+première ligne de la table suivante contient tous les contextes possibles (nb : même si 
+"it was the" a deux occurrences dans notre phrase, le contexte correspondant "it \textunderscore \ the" 
+ne se trouve qu'une fois dans la table). La première colonne contient tous les mots sans répétition.
+Finalement, pour chaque mot, les valeur dans sa ligne indique combien de fois il se trouve dans le contexte
+spécifié.  
+
+\begin{table}[h]
+    \resizebox{1.2\textwidth}{!}{%
+    \begin{tabular}{|c|*{10}{c|}}
+        \hline
+        g & 
+        DÉBUT \textunderscore \ was & 
+        it \textunderscore \ the & 
+        was \textunderscore \ best & 
+        the \textunderscore \ of & 
+        best \textunderscore \ times & 
+        of \textunderscore \ it & 
+        times \textunderscore \ was & 
+        was \textunderscore \ worst & 
+        worst \textunderscore \ times & 
+        of \textunderscore \ FIN \\
+        \hline
+        it & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\ 
+        \hline
+        was & 0 & 2 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+        \hline
+        the & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\
+        \hline 
+        best & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+        \hline 
+        of & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 0 \\
+        \hline 
+        times & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1 \\
+        \hline 
+        worst & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+        \hline  
+    \end{tabular}%
+    }
+    \caption{Exemple de contexte} 
+    \label{tab:example} 
+\end{table}
+
+On observe que les vecteurs pour les mots \textit{best} et \textit{worst} sont les mêmes :
+$[0,0,0,1,0,0,0,0,0,0]$. La distance euclidienne entre les deux est donc zéro, et par la 
+hypothèse distributionnelle, ces deux mots devraient avoir la même signification. Ce n'est pas 
+tout à fait le cas, car \textit{best} et \textit{worst} sont des antonymes, pas des synonymes. 
+Pourtant, leurs sémantiques sont très proches, et on a réussi à le reconnaître. 
+
+Dans l'exemple précédent, notre corpus (l'entrée textuelle) consistait en une phrase, ce qui 
+nous a donné 10 contextes : 10 positions possible pour un mot.  
+En réalité, on est emmené à utiliser des corpus beaucoup plus grands, où on aurait donc des 
+milliers ou mêmes des millions de contextes possibles - des vecteurs à des milliers ou des 
+millions de dimensions. On se doute que ce ne serait pas très 
+pratique. Grâce à des techniques de réduction de dimensionalité, on peut transformer des vecteurs 
+énormes en vecteurs de taille plus raisonnable : environ 100-300, sans perdre trop 
+d'information. Je laisse les détails de cette 
+transformation de côté, peut-être si j'ai le temps à la fin.  
+
+\section*{Démonstration}
+Il existe de nombreuses collections de vecteurs déjà prêtes qu'on 
+peut télécharger et utiliser dans nos projets. Dans l'exemple suivant, 
+on utilisera une collection de 514 000 vecteurs de mot en anglais à 300 dimensions. 
+Ca fait beaucoup de vecteurs. 
+
+La démonstration suivante est elle aussi fortement inspirée de 
+\textit{Understanding word vectors} de Allison Parrish, comme je ne suis pas 
+très original et surtout je n'ai pas le temps de développer un exemple intéressant 
+moi-même. Pour cela, il faudrait vraiment plonger dans le sujet, et ce n'est pas 
+possible, sachant qu'on est à la fin du semeste :)
+
+Je vais utiliser l'un de mes livres préféré comme le corpus. Il s'agit de 
+Joyland, écrit par Stephen King. Pour vous mettre un peu dans l'ambiance, 
+Joyland parle d'un jeune homme du nom Devin Jones. Devin a 21 ans, il fait 
+des études d'anglais, il rêve de devenir écrivant mais sinon il ne sait pas 
+quoi faire de sa vie. Sa copine vient de le larguer, et donc au lieu de 
+passer les vacances d'été avec elle, il les passe à travailler dans un parc 
+d'attraction. Ici il trouve des amis, un boulot qui le plaît. Un peu plus tard, 
+il fait enfin la connaissance de la jolie femme blonde qui habite dans l'une des maisons 
+qui bordent la plage que Devin traverse pour se rendre au parc. Il y a aussi 
+un mystère à résoudre (c'est du Stephen King) : une suite de meurtres de jeunes 
+filles, toutes dans des parcs d'attraction, incluant celui où Devin passe son été. 
+Tout ça dans une vibe des années 70 en Caroline du Nord. 
+
+On va utiliser SpaCy pour traiter le corpus et pour pouvoir jouer avec les 
+vecteurs de mot. Voici le code : 
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=1\textwidth]{code1.png}
+  \caption{This is an example image.}
+  \label{fig:example}
+\end{figure}
+
 
 \chapter{Deep Learning pour le TALN}
 \chapter{Conclusion}
