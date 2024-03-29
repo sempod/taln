@@ -4,6 +4,36 @@
 \usepackage{amsmath}
 \usepackage{todonotes}
 \usepackage{tabularx}
+\usepackage{listings}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+\lstset{
+  language=Python,
+  inputencoding=utf8/latin, % or utf8
+  commentstyle=\itshape\color{gray} % Adjust the comment style
+}
 
 \newcommand{\TALN}{traitement automatique du langage naturel}
 
@@ -590,7 +620,8 @@ filles, toutes dans des parcs d'attraction, incluant celui où Devin passe son �
 Tout ça dans une vibe des années 70 en Caroline du Nord. 
 
 On va utiliser SpaCy pour traiter le corpus et pour pouvoir jouer avec les 
-vecteurs de mot. Voici le code : 
+vecteurs de mot. Voici le code (les commentaires sont en anglais mais je crois que 
+çe ira) : 
 
 \begin{figure}[h]
   \centering
@@ -599,6 +630,89 @@ vecteurs de mot. Voici le code :
   \label{fig:example}
 \end{figure}
 
+\begin{lstlisting}[language=Python]
+  from __future__ import unicode_literals
+  import spacy 
+  import numpy as np 
+
+  # load the word vectors into our model 
+  nlp = spacy.load("en_core_web_lg")
+  # read the text (joyland.txt) and create our corpus (doc)
+  doc = nlp(open("joyland.txt").read())
+
+  # keep only alphabetical words and lowercase them 
+  tokens = list(set([w.text.lower() for w in doc if w.is_alpha]))
+  # keep only words that have a vector in our model 
+  tokens = list(filter(lambda x: nlp.vocab.has_vector(x), tokens))
+  # extract sentences
+  sentences = list(doc.sents)
+
+  """ Calculates the cosine similarity between two vectors. """
+  def cos_sim(u, v):
+    return np.dot(u, v)/np.linalg.norm(u)/np.linalg.norm(v)
+
+  """ Returns the vector corresponding to the input string. """
+  def vec(s : str):
+    return np.array(nlp.vocab[s].vector)
+
+  """ Return the word corresponding to the given vector by looking 
+  for the closest vector in the model.
+  """
+  def word(v):
+    max_sim = -1 
+    res = ""
+    for w in nlp.vocab:
+      if w.has_vector:
+        sim = cos_sim(v, w.vector)
+        if sim > max_sim:
+          max_sim = sim 
+          res = w.text
+    return res  
+
+  """ Return the list of most similar words to the given one. """
+  def closest_words(token_list, v, n=5):
+    return sorted(token_list, 
+                    key=lambda x: cos_sim(vec(x), v), 
+                    reverse=True)[:n]
+
+  """ Return closest sentences """
+  def closest_sents(sents_list, sent, n=5):
+    return sorted(sents_list, 
+                  key=lambda x: cos_sim(x.vector, nlp(sent).vector), 
+                  reverse=True)[:n]
+\end{lstlisting}
+
+Regardons quelques exemples de mots les plus similaires. Il y a des similarité 
+purement grammaticales, mais aussi des similarités sémantiques très intéressantes.
+\begin{lstlisting}[language=Python]
+  >>> print(closest_words(tokens, vec("food")))
+['food', 'seafood', 'meat', 'cooking', 'meal']
+>>> print(closest_words(tokens, vec("love")))
+['love', 'loves', 'loved', 'loving', 'lovers']
+>>> print(closest_words(tokens, vec("friend")))
+['friend', 'ladyfriend', 'girlfriend', 'friends', 'boyfriend']
+>>> print(closest_words(tokens, vec("dog")))
+['dog', 'dogs', 'cat', 'pet', 'pup']
+>>> print(closest_words(tokens, vec("happy")))
+['happy', 'unhappy', 'grateful', 'excited', 'happily']
+\end{lstlisting}  
+
+Un exemple classique consiste à trouver le mot à mi-chemin entre \textit{day} et 
+\textit{night}.
+\begin{lstlisting}[language=Python]
+  >>> v = (vec("day") + vec("night"))/2
+  >>> print(closest_words(tokens, v))
+  ['day', 'night', 'morning', 'evening', 'afternoon']
+\end{lstlisting}  
+
+Ajoutons maintenant le vecteur de \textit{meat} à \textit{food}.
+Toujours un bon dîner mais un peu plus carnivore. 
+\begin{lstlisting}[language=Python]
+  >>> print(closest_words(tokens, vec("food")))
+  ['food', 'seafood', 'meat', 'cooking', 'meal']
+  >>> print(closest_words(tokens, vec("food") + vec("meat")))
+  ['food', 'meat', 'seafood', 'chicken', 'pork']
+\end{lstlisting}  
 
 \chapter{Deep Learning pour le TALN}
 \chapter{Conclusion}

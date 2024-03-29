@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.17)  24 MAR 2024 17:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.17)  29 MAR 2024 17:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -389,12 +389,36 @@ Package: array 2021/10/04 v2.5f Tabular extension package (FMi)
 \TX@delta=\dimen273
 \TX@cols=\count308
 \TX@ftn=\toks38
+) (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count309
+\lst@gtempboxa=\box65
+\lst@token=\toks39
+\lst@length=\count310
+\lst@currlwidth=\dimen274
+\lst@column=\count311
+\lst@pos=\count312
+\lst@lostspace=\dimen275
+\lst@width=\dimen276
+\lst@newlines=\count313
+\lst@lineno=\count314
+\lst@maxwidth=\dimen277
+ (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
+\c@lstnumber=\count315
+\lst@skipnumbers=\count316
+\lst@framebox=\box66
+) (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2020/03/24 1.8d listings configuration
+))
+Package: listings 2020/03/24 1.8d (Carsten Heinz)
+ (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2020/03/24 1.8d listings language file
 )
-\c@hyp=\count309
+\c@hyp=\count317
  (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count310
-\l__pdf_internal_box=\box65
+\l__color_backend_stack_int=\count318
+\l__pdf_internal_box=\box67
 ) (./TALN.aux
 
 LaTeX Warning: Label `fig:example' multiply defined.
@@ -411,41 +435,41 @@ LaTeX Warning: Label `fig:example' multiply defined.
 )
 \openout1 = `TALN.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Info: Redefining \degres on input line 15.
-LaTeX Info: Redefining \up on input line 15.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Info: Redefining \degres on input line 45.
+LaTeX Info: Redefining \up on input line 45.
 
 
 Package french.ldf Warning: OT1 encoding should not be used for French.
 (french.ldf)                Add \usepackage[T1]{fontenc} to the preamble
-(french.ldf)                of your document; reported on input line 15.
+(french.ldf)                of your document; reported on input line 45.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count311
-\scratchdimen=\dimen274
-\scratchbox=\box66
-\nofMPsegments=\count312
-\nofMParguments=\count313
-\everyMPshowfont=\toks39
-\MPscratchCnt=\count314
-\MPscratchDim=\dimen275
-\MPnumerator=\count315
-\makeMPintoPDFobject=\count316
-\everyMPtoPDFconversion=\toks40
+\scratchcounter=\count319
+\scratchdimen=\dimen278
+\scratchbox=\box68
+\nofMPsegments=\count320
+\nofMParguments=\count321
+\everyMPshowfont=\toks40
+\MPscratchCnt=\count322
+\MPscratchDim=\dimen279
+\MPnumerator=\count323
+\makeMPintoPDFobject=\count324
+\everyMPtoPDFconversion=\toks41
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -453,8 +477,9 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 
-Package todonotes Warning: The length marginparwidth is less than 2cm and will most likely cause issues with the appearance of inserted todonotes. The issue can be solved by adding a line like \setlength {\marginparwidth }{2cm} prior to loading the todonotes package. on input line 15.
+Package todonotes Warning: The length marginparwidth is less than 2cm and will most likely cause issues with the appearance of inserted todonotes. The issue can be solved by adding a line like \setlength {\marginparwidth }{2cm} prior to loading the todonotes package. on input line 45.
 
+\c@lstlisting=\count325
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./TALN.toc)
@@ -466,30 +491,30 @@ Package todonotes Warning: The length marginparwidth is less than 2cm and will m
 ] [1]
 Chapitre 1.
 
-Overfull \hbox (21.94084pt too wide) in paragraph at lines 29--36
+Overfull \hbox (21.94084pt too wide) in paragraph at lines 59--66
 []\OT1/cmr/m/n/10.95 Nous al-lons en pre-mier re-gar-der l'his-toire de ce do-maine, o^^Ru nous d^^Secouvrirons
  []
 
 
-LaTeX Warning: Citation `QM-chatbots-and-no' on page 1 undefined on input line 55.
+LaTeX Warning: Citation `QM-chatbots-and-no' on page 1 undefined on input line 85.
 
 
-LaTeX Warning: Citation `QM-NN-learn-like-humans' on page 1 undefined on input line 56.
+LaTeX Warning: Citation `QM-NN-learn-like-humans' on page 1 undefined on input line 86.
 
 
-LaTeX Warning: Citation `QM-tiny-language-models' on page 1 undefined on input line 57.
+LaTeX Warning: Citation `QM-tiny-language-models' on page 1 undefined on input line 87.
 
 [1
 
 ]
 Chapitre 2.
 
-Overfull \hbox (10.36224pt too wide) in paragraph at lines 68--82
+Overfull \hbox (10.36224pt too wide) in paragraph at lines 98--112
 \OT1/cmr/m/n/10.95 duire 60 phrases. Les phrases par-laient sur-tout de la chi-mie, les math^^Sematiques,
  []
 
 
-Overfull \hbox (14.28285pt too wide) in paragraph at lines 95--126
+Overfull \hbox (14.28285pt too wide) in paragraph at lines 125--156
  [][] 
  []
 
@@ -499,7 +524,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [2
 
 ] [3] [4] [5] [6] [7]
-Overfull \hbox (3.11049pt too wide) in paragraph at lines 350--359
+Overfull \hbox (3.11049pt too wide) in paragraph at lines 380--389
 []\OT1/cmr/m/n/10.95 On pour-rait alors consid^^Serer ELIZA comme l'un des pre-miers pro-grammes
  []
 
@@ -508,12 +533,12 @@ Chapitre 3.
 <animal-table.png, id=56, 355.3275pt x 327.2225pt>
 File: animal-table.png Graphic file (type png)
 <use animal-table.png>
-Package pdftex.def Info: animal-table.png  used on input line 419.
+Package pdftex.def Info: animal-table.png  used on input line 449.
 (pdftex.def)             Requested size: 216.0022pt x 198.92139pt.
 <animal-space.png, id=58, 523.9575pt x 524.96124pt>
 File: animal-space.png Graphic file (type png)
 <use animal-space.png>
-Package pdftex.def Info: animal-space.png  used on input line 428.
+Package pdftex.def Info: animal-space.png  used on input line 458.
 (pdftex.def)             Requested size: 216.0022pt x 216.41301pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -524,14 +549,14 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <animal-space-dif.png, id=64, 537.00626pt x 529.98pt>
 File: animal-space-dif.png Graphic file (type png)
 <use animal-space-dif.png>
-Package pdftex.def Info: animal-space-dif.png  used on input line 443.
+Package pdftex.def Info: animal-space-dif.png  used on input line 473.
 (pdftex.def)             Requested size: 216.0022pt x 213.177pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [11 <./animal-space.png>] [12 <./animal-space-dif.png>]
-Overfull \hbox (71.99918pt too wide) in paragraph at lines 516--547
+Overfull \hbox (71.99918pt too wide) in paragraph at lines 546--577
 [][] 
  []
 
@@ -539,21 +564,21 @@ Overfull \hbox (71.99918pt too wide) in paragraph at lines 516--547
 <code1.png, id=76, 676.5275pt x 906.38625pt>
 File: code1.png Graphic file (type png)
 <use code1.png>
-Package pdftex.def Info: code1.png  used on input line 597.
+Package pdftex.def Info: code1.png  used on input line 628.
 (pdftex.def)             Requested size: 360.0pt x 482.3325pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[14] [15 <./code1.png>]
+[14] [15] [16] [17 <./code1.png>]
 Chapitre 4.
-[16
+[18
 
 ]
 Chapitre 5.
-(./TALN.bbl [17
+(./TALN.bbl [19
 
-]) [18
+]) [20
 
 ] (./TALN.aux)
 
@@ -564,18 +589,18 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 15488 strings out of 479342
- 309739 string characters out of 5869178
- 598503 words of memory out of 5000000
- 33239 multiletter control sequences out of 15000+600000
- 477187 words of font info for 55 fonts, out of 8000000 for 9000
+ 17340 strings out of 479342
+ 333965 string characters out of 5869178
+ 1141893 words of memory out of 5000000
+ 35071 multiletter control sequences out of 15000+600000
+ 477989 words of font info for 59 fonts, out of 8000000 for 9000
  473 hyphenation exceptions out of 8191
- 115i,11n,118p,8362b,860s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on TALN.pdf (21 pages, 406260 bytes).
+ 115i,11n,118p,8362b,1857s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on TALN.pdf (23 pages, 436613 bytes).
 PDF statistics:
- 149 PDF objects out of 1000 (max. 8388607)
- 91 compressed objects within 1 object stream
+ 166 PDF objects out of 1000 (max. 8388607)
+ 101 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  33 words of extra memory for PDF output out of 10000 (max. 10000000)
 
