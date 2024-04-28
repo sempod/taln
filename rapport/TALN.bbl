@@ -1,22 +1,41 @@
 \begin{thebibliography}{1}
 
-\bibitem{A-Brief-History-of-NLP}
-Keith~D. Foote.
-\newblock \textit{A Brief History of Natural Language Processing}, juillet
-  2023.
+\bibitem{wikipedia-nlp}
+Les contributeurs~de Wikipédia.
+\newblock \textit{Natural language processing}.
+\newblock Consulté en avril 2024.
 
-\bibitem{MUNI-NLP}
-{Université Masaryk, Brno, République Tchèque}.
-\newblock \textit{Centrum zpracování přirozeného jazyka (Centre de
-  traitement du langage naturel)}, 2001-2023.
+\bibitem{wikipedia-georgetown}
+Les contributeurs~de Wikipédia.
+\newblock \textit{Georgetown-IBM experiment}.
+\newblock Consulté en avril 2024.
 
-\bibitem{NLP-Stanford-website}
-{Shamala Gallagher, Anna Raffert, Amy Wu, Sophomore College 2004: The
-  Intellectual Excitement of Computer Science, Professor Eric Roberts}.
-\newblock \textit{Natural Language Processing}, 2004.
+\bibitem{hutchins-georgetown}
+John HUTCHINS.
+\newblock \textit{The first public demonstration of machine translation: the
+  Georgetown-IBM system, 7th January 1954}.
+\newblock Consulté en avril 2024 (version archivée du site original sur
+  https://hutchinsweb.me.uk/).
 
-\bibitem{NLP-Wikipedia}
-Les contributeurs~de Wikipedia.
-\newblock \textit{Natural language processing}, 2023.
+\bibitem{wikipedia-eliza}
+Les contributeurs~de Wikipédia.
+\newblock \textit{ELIZA}.
+\newblock Consulté en avril 2024.
+
+\bibitem{eliza-original}
+Joseph WEIZENBAUM.
+\newblock Eliza - a computer program for the study of natural language
+  communication between man and machine, 1966.
+
+\bibitem{eliza-gpt}
+UC~San~Diego Cameron R.~JONES, Benjamin K.~BERGEN.
+\newblock Does gpt-4 pass the turig test?, 2024.
+
+\bibitem{weizenbaum-book}
+Joseph WEIZENBAUM.
+\newblock {\em Computer Power And Human Reason : From Judgement to
+  Calculation}.
+\newblock W. H. Freeman and Company, 1976.
+\newblock Page 7.
 
 \end{thebibliography}

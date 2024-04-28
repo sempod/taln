@@ -1,6 +1,25 @@
 \babel@toc {french}{}\relax 
 \contentsline {chapter}{\numberline {1}Introduction}{1}{}%
 \contentsline {chapter}{\numberline {2}Brève histoire du TALN}{2}{}%
-\contentsline {chapter}{\numberline {3}Word embedding}{10}{}%
-\contentsline {chapter}{\numberline {4}Deep Learning pour le TALN}{18}{}%
-\contentsline {chapter}{\numberline {5}Conclusion}{19}{}%
+\contentsline {section}{\numberline {2.1}Approche symbolique}{2}{}%
+\contentsline {subsection}{\numberline {2.1.1}l'expérience Georgetown-IBM}{2}{}%
+\contentsline {subsection}{\numberline {2.1.2}ELIZA}{4}{}%
+\contentsline {subsubsection}{Introduction}{4}{}%
+\contentsline {subsubsection}{Fonctionnement général}{5}{}%
+\contentsline {subsubsection}{Les transformations}{6}{}%
+\contentsline {subsubsection}{Décomposition et réassamblage}{6}{}%
+\contentsline {subsubsection}{Substitution}{7}{}%
+\contentsline {subsubsection}{Classement des mots clés}{7}{}%
+\contentsline {subsubsection}{Dernière réassamblage utilisé}{7}{}%
+\contentsline {subsubsection}{Mémoire}{8}{}%
+\contentsline {subsubsection}{Discussion}{8}{}%
+\contentsline {subsection}{\numberline {2.1.3}ALPAC report}{9}{}%
+\contentsline {section}{\numberline {2.2}Approche statistique}{10}{}%
+\contentsline {section}{\numberline {2.3}Approche neuronale}{10}{}%
+\contentsline {chapter}{\numberline {3}Word embedding}{11}{}%
+\contentsline {section}{\numberline {3.1}Introduction}{11}{}%
+\contentsline {section}{\numberline {3.2}Principe sur un exemple simple}{11}{}%
+\contentsline {section}{\numberline {3.3}Sémantique distributionnelle}{13}{}%
+\contentsline {section}{\numberline {3.4}Démonstration}{15}{}%
+\contentsline {chapter}{\numberline {4}Deep Learning pour le TALN}{19}{}%
+\contentsline {chapter}{\numberline {5}Conclusion}{20}{}%

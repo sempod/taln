@@ -49,16 +49,17 @@
 
 
 \begin{abstract}
-  Ces notes présentent un regard épistémologique sur le domaine du traitement automatique du langage naturel. 
-  Elles parlent brièvement de son histoire, passant ensuite sur l'état actuel du domaine, où on regarde de plus près 
-  les techniques de l'apprentissage automatique et du deep learning utilisées dans ce domaine.
+  Ces notes présentent un regard épistémologique sur le domaine du traitement automatique du 
+  langage naturel. Elles parlent de son histoire et de son développement, passant ensuite 
+  sur l'état actuel du domaine, où on regarde de plus près 
+  des techniques de l'apprentissage automatique et du deep learning.
 \end{abstract}
 
 
 \chapter{Introduction}
-  Nous allons en premier regarder l'histoire de ce domaine, où nous découvrirons
-  les trois principales approches dans le traitement automatique du langage 
-  naturel (TALN en abrégé) : symbolique, statistique et neuronale. 
+  Nous allons en premier regarder l'histoire du traitement automatique du langage 
+  naturel (TALN en abrégé), en passant par ses 
+  trois approches principales : symbolique, statistique et neuronale. 
   Il est impossible pour moi de donner un résumé complet de l'histoire de ce domaine, 
   ainsi que de décrire chaque approche parfaitement. J'ai donc pris la décision de surtout 
   utiliser des exemples de programmes et d'expériences spécifiques pour montrer 
@@ -66,49 +67,44 @@
 
   Les insuffisances des deux premières approches nous emmèneront vers le TALN neuronal, 
   c'est-à-dire des techniques utilisant l'apprentissage automatique (ML en abrégé pour "machine learning") ou 
-  le deep learning (DL en abrégé). On regardera les tâches les plus courantes dans le TALN et comment 
-  on peut utiliser des modèles de ML et de DL pour les résoudre. 
-  On répondra à la question : "Pourquoi l'approche neuronale est la plus efficace ?" 
-  et on discutera des applications actuelles. 
+  le deep learning (DL en abrégé).  
   
-  On passera ensuite sur un exemple concret : Word2Vec, qui est une technique de ML légère et 
+  Ici on passera sur un autre exemple concret : Word2Vec, qui est une technique de ML légère et 
   puissante en même temps, permettant de transformer des mots en vecteurs. 
-  On expliquera son fonctionnement et on regardera ses applications, surtout dans les tâches 
-  du TALN qui concernent la sémantique des mots.
+  On expliquera son fonctionnement et on regardera ses applications, surtout dans l'analyse
+  sémantique.
 
-  Finalement, on verra et essayera d'expliquer les techniques actuelles - celles utilisant le deep learning.  
-  On regardera aussi les problèmes actuels du TALN et son possible développement futur.  
-  \cite{A-Brief-History-of-NLP}
-  \cite{MUNI-NLP}
-  \cite{NLP-Stanford-website}
-  \cite{NLP-Wikipedia}
-  \cite{QM-chatbots-and-no}
-  \cite{QM-NN-learn-like-humans}
-  \cite{QM-tiny-language-models}
-
-
+  Par la suite, on verra et essayera d'expliquer (au moins légèrement) les techniques actuelles - celles utilisant le deep learning.  
+  
+  A la fin, on discutera des problèmes actuels du TALN et son possible développement futur.  
 \chapter{Brève histoire du TALN}
-  \section*{Approche symbolique}
-    \subsection*{l'expérience Georgetown-IBM}
-Le domaine a débuté dans les années 1950. On peut dire que le premier résultat 
-marquant et connu était l'expérience Georgetown-IBM en 1954. Il s'agissait d'une 
+  \section{Approche symbolique}
+    \subsection{l'expérience Georgetown-IBM}
+    \textit{Sources de cette section : } \newline
+    \noindent \cite[Natural Language Processing (Wikipédia)]{wikipedia-nlp} \newline
+    \cite[Georgetown-IBM experiment (Wikipédia)]{wikipedia-georgetown} \newline 
+    \cite[The first public demonstration of machine translation...]{hutchins-georgetown}
+
+Le domaine a débuté dans les années 1950. Le premier résultat 
+marquant et connu par le public général était l'expérience Georgetown-IBM en 1954. Il s'agissait d'une 
 démonstration de traduction automatique du russe vers l'anglais, comme le 
 contexte historique le voulait.
 
-Le programme contenait 6 règles de grammaire, 250 éléments lexicaux dans son 
-vocabulaire (thèmes et désinences des mots), et était capable de traduire 60 
+Le programme contenait 6 règles de grammaire, un vocabulaire de 250 éléments lexicaux 
+(thèmes et désinences des mots compris), et était capable de traduire 60 
 phrases. Les phrases parlaient surtout de la chimie, les mathématiques, la 
 communication, la métallurgie et les affaires militaires. Il est essentiel de 
 noter que les phrases ont été choisies soigneusement par les auteur du programme. 
 Certaines règles et opérations du programme était spécifiques à un nombre limité 
-de mots et de phrases d'entrée. Chaque mot russe du vocabulaire correspond à un ou deux 
-équivalents anglais. En plus, chaque mot aurait 3 codes numériques associés, qui 
-déterminent la règle de grammaire à utiliser pour produire la sortie. 
+de mots et de phrases d'entrée. Chaque mot russe du vocabulaire correspondait à un ou deux 
+équivalents anglais. En plus, chaque mot avait 3 codes numériques associés, qui 
+déterminait la règle de grammaire à utiliser pour produire la sortie. 
 Si cette description nous rappelle la notion de 
 "hardcoding", ce n'est pas par hasard. Le programme était essentiellement un 
 dictionnaire assez limité, qui cherchait la traduction correspondante pour chaque 
 mot russe, et qui appliquait l'une des 6 règles pour rendre la phrase anglaise 
 à la sortie plus correcte. Regardons ceci sur un exemple. 
+
 
 \noindent \textbf{La phrase russe (en alphabet latin)} \newline 
 Vyelyichyina ugla opryedyelyayetsya otnoshyenyiyem dlyini dugi k radyiusu. \newline  
@@ -153,7 +149,7 @@ cette phrase.
     -u & to & 131 & *** & ** & 3 \\
     \hline
   \end{tabular}
-  \caption{Example Table} % Caption for the table
+  \caption{Exemple de traduction (Georgetown-IBM)} % Caption for the table
   \label{tab:example} % Label for referencing the table
 \end{table}
 
@@ -177,13 +173,16 @@ Le reste de la traduction serait trouvé similairement, on va donc s'arrêter ic
 petit exemple est suffisant pour illustrer le fait que le programme ne fait que suivre bêtement les 
 règles "hardcodées" par les chercheurs. Avant d'être programmé, ce processus qu'on vient d'essayer 
 a été testé par des personnes avec aucune connaissance en russe, pour vérifier qu'il produit des 
-résultats corrects sur les phrases données. 
+résultats corrects sur les phrases données. Si on essaie de trouver une analogie, on peut imaginer
+qu'on donne un dictionnaire russe-anglais à une personne anglophone qui ne parle pas russe, on lui demande 
+de traduire des phrases, mais en plus de ça, on lui donne aussi une liste d'instructions à suivre 
+pour produire des phrases plus naturelles (en n'uilisant que le dictionnaire pour traduire). 
 
 En gros, la valeur de l'expérience Georgetown-IBM repose dans l'analyse de la grammaire russe et dans 
 l'invention des 6 règles qui permettent de traduire les phrases prédéterminées sans aucune réflexion. 
 Cette tâche a ensuite été passée à un ordinateur. 
 
-Ce qui est intéressant est que cette expérience était vue comme un énorme succès. Voici quelques 
+Ce qui est intéressant, c'est que cette expérience était vue comme un énorme succès. Voici quelques 
 extraits d'article des journaux américains contemporains pour illustrer ce point.
 \begin{quote} 
 It is expected by IBM and Georgetown University, which collaborated on this project,
@@ -203,22 +202,30 @@ interpretation with a nonchalant attitude of assumed intellectual achievement. (
 Christian Science Monitor)
 \end{quote}
 
-Il faut remarquer que dans les années 1950, les ordinateurs étaient toujours vu comme des machines, ou 
-même des cerveaux mystérieux par la plupart des gens. Ceci a permis à cette démonstration d'arriver à 
-son but : attirer l'attention du public et du gouvernement américain et obtenir des financement pour 
+On remarque surtout l'utilisation du mot "brain", alors que le programme n'était qu'une suite 
+de branchements IF ELSE. Une jolie illustration du fait que dans les années 1950, les ordinateurs 
+étaient vus comme des cerveaux mystérieux par une partie significante de la population. 
+Ceci a permis à cette démonstration d'arriver à son but : attirer l'attention du public et du 
+gouvernement américain et obtenir des financement pour 
 la recherche future dans ce domaine. 
   
-    \subsection*{ELIZA}
-      \subsubsection*{Introduction}
+    \subsection{ELIZA}
+    \textit{Sources de cette partie :} \newline
+    \cite[ELIZA (Wikipédia)]{wikipedia-eliza} \newline
+    \cite[L'article original de Joseph Weizenbaum sur ELIZA.]{eliza-original} \newline
+    \cite[Does GPT-4 pass the Turing test? (étude de UC San Diego)]{eliza-gpt} \newline
+    \cite[Computer Power and Human Reason (livre de Weizenbaum)]{weizenbaum-book}
+
+      \subsubsection{Introduction}
 En 1966, ELIZA est créé par Joseph Weizenbaum - un programme pour explorer l'interaction entre les humains et 
-les machines. ELIZA est capable d'utiliser les règles définies dans un script externe pour simuler 
-une conversation. Le programme repose sur l'application de pattern-matching et d'une 
+les machines. ELIZA est capable d'utiliser les règles définies dans un script externe pour 
+simuler une conversation. Le programme repose sur l'application du pattern-matching et d'une 
 méthodologie de substitution, qui seront expliqués sur un exemple.
 Son script le plus célèbre : DOCTOR, simule un psychothérapeute de l'école Rogerienne
-(de "Rogerian school" en anglais). Ce qui est important à retenir est que dans cette approche 
+("Rogerian school" en anglais). Ce qui est important à retenir est que dans cette approche 
 psychothérapeutique, le psychologue répète souvent les paroles du patient à ce dernier. 
 Ce script permet donc à ELIZA de garder l'illusion d'une conversation avec un humain, 
-sans savoir rien sur le monde réel. Citons Weizenbaum pour expliquer ce point:
+sans savoir rien sur le monde réel. Citons Weizenbaum qui explique ce point:
 
 \begin{quote}
   This mode of conversation was chosen because the psychiatric interview is one of the 
@@ -228,27 +235,25 @@ sans savoir rien sur le monde réel. Citons Weizenbaum pour expliquer ce point:
   psychiatrist "I went for a long boat ride" and he responded "Tell me about boats", 
   one would not assume that he knew nothing about boats, but that he had some purpose 
   in so directing the subsequent conversation. It is important to note that this 
-  assumption is one made by the speaker. (Joseph Weizenbaum, ELIZA A Computer Program
-  For the Study of Natural Language
-  Communication Between Man
-  And Machine, 1966)
+  assumption is one made by the speaker. \cite[L'article original de Joseph Weizenbaum
+  sur ELIZA]{eliza-original}
 \end{quote} 
 
-      \subsubsection*{Fonctionnement général}
-Le fonctionnement général de ELIZA peut être décrit ainsi : le texte entré par l'utilisateur 
-est inspecté pour trouver l'un des "mots clés". Si un mot clé est trouvé, l'entrée est transformée 
+      \subsubsection{Fonctionnement général}
+Le fonctionnement général d'ELIZA peut être décrit ainsi : le texte entré par l'utilisateur 
+est inspecté pour y trouver l'un des "mots clés". Si un mot clé est trouvé, l'entrée est transformée 
 en appliquant une règle associée avec ce mot clé. Si aucun mot clé n'est trouvé, une réponse générale 
 ne dépendant que de l'entrée est formulée, ou bien une transformation déjà utilisée avant est appliquée. 
 Les mots clé et leurs transformations sont définis dans le script externe. ELIZA peut donc travailler 
-avec n'importe quel script, et c'est ce dernier qui détermine "sa personnalité". 
+avec n'importe quel script, et c'est ce dernier qui détermine sa "personnalité". 
 
-Weizenbaum résume ceci en 5 problèmes techniques fondamentaux :
+Weizenbaum résume ceci en 5 problèmes techniques :
 \begin{itemize}
   \item L'identification du mot clé le plus important, car il peut y en avoir plusieurs dans une 
-  seule phrase.
+  seule entrée.
   \item L'identification d'un contexte minimal dans lequel le mot clé apparaît. Par exemple, si le 
   mot clé est "you", est-ce qu'il est suivi par "are" ? Dans ce cas, une assertion sur ELIZA est 
-  probablement faite par l'utilisateur.
+  probablement faite par l'utilisateur. Une telle information peut nous aider avec le choix de transformation.
   \item Le choix d'une transformation appropriée et l'exécution de cette transformation. 
   \item Un mécanisme qui permettra à ELIZA de répondre d'une façon "intelligente" si aucun mot 
   clé est trouvé. 
@@ -256,21 +261,22 @@ Weizenbaum résume ceci en 5 problèmes techniques fondamentaux :
   car il n'est pas essentiel pour comprendre le fonctionnement d'ELIZA. 
 \end{itemize}
 
-      \subsubsection*{Les transformations}
-Le principe des transformation est expliqué très bien par Weizenbaum dans son article original : 
+      \subsubsection{Les transformations}
+Le principe des transformation est expliqué très bien par Weizenbaum dans son article original (ce qui suit 
+en est une analogie) : 
 considérons la phrase "Je suis très malheureux". Supposons qu'un étranger (pourquoi pas un Slovaque) avec un niveau de 
 français limité a entendu cette phrase mais n'a compris que le début de la phrase : "Je suis". 
-Le Slovaque a quand-même retenu le reste de la phrase, mais il ne sait pas ce que ça veut dire. 
-Souhaitant répondre à la personne, il remplace "Je suis" par "Ca fait combien de temps que tu es"
+Le Slovaque a quand-même retenu le reste de la phrase, mais il ne sait pas ce qu'il veut dire. 
+Souhaitant répondre à la personne, il remplace "Je suis" par "Ca fait longtemps que tu es"
 et ensuite il répète le reste de la phrase originale pour formuler sa réponse :
-"Ca fait combien de temps que tu es malheureux ?". Le Slovaque a appliqué un certain modèle
+"Ca fait longtemps que tu es malheureux ?". Le Slovaque a appliqué un certain modèle
 à la phrase originale, qui l'a séparée en deux parties : "Je suis" et "très malheureux".
-Il a ensuite utilisé une transformation qui lui permet de répondre même s'il ne comprend pas 
+Il a ensuite utilisé une transformation qui lui a permis de répondre même s'il ne comprenait pas 
 la phrase entière. Cette transformation lui dit qu'à toute phrase de la forme 
-"Je suis BLABLA", il est possible de répondre avec "Ca fait combien de temps que tu es BLABLA", 
+"Je suis BLABLA", il est possible de répondre avec "Ca fait longtemps que tu es BLABLA ?", 
 sans savoir ce que le BLABLA veut dire. Voilà ce que fait ELIZA.  
 
-      \subsubsection*{Décomposition et réassamblage}
+      \subsubsection{Décomposition et réassamblage}
 Plus formellement, considérons la phrase "It seems that you hate me". On l'a décompose ainsi
 en quatre parties :
 
@@ -278,19 +284,20 @@ en quatre parties :
     (1)It seems that (2)you (3)hate (4)me
   \end{center} 
   
-  Supposons que l'étranger ne comprend que les parties 2 et 4 de cette phrase. Une façon générale 
+  Supposons que l'étranger ne comprend que les parties 2 et 4 de cette phrase. Les mots qu'il a compris 
+  représente le/-s mot/-s clé pour ELIZA. Ici, il s'agit des mots "you" et "me". Une façon générale 
   pour lui de répondre pourrait être "What makes you think I hate you?". C'est-à-dire il jette la partie (1), 
   il traduit les parties qu'il a compris - "you" devient "I" et "me" devient "you" et finalement il 
   ajoute une phrase de base "What makes you think" devant tout ça. 
 
-  On peut alors représenter le modèle de decomposition que l'étranger a utilisé plus formellement 
+  On peut alors représenter la régle de décomposition que l'étranger a utilisé plus formellement :
 
   \begin{center}
     (0 YOU 0 ME)
   \end{center} 
 
   où le 0 correspond à un nombre quelconque de mots dans la phrase originale. 
-  Voici la règle de réassamblage correspondante
+  Voici la règle de réassamblage correspondante.
 
   \begin{center}
     (WHAT MAKES YOU THINK I 3 YOU)
@@ -321,31 +328,30 @@ en quatre parties :
   les mots clés du script est construit une fois que le script est chargé par ELIZA. 
   En plus, les clés du dictionnaire sont hachées pour permettre à ELIZA de déterminer 
   rapidement si un mot lu est un mot clé ou pas, car la plupart des mots que ELIZA va lire 
-  ne sont pas des mot clés. Je pense que l'idée principale derrière ELIZA, ainsi 
-  que la façon dont Weizenbaum l'a implémentée sont maintenant clairs. Regardons 
+  ne sont pas des mot clés. Regardons 
   d'autres mécanismes qui sont présents dans ELIZA.
 
-  \subsubsection*{Substitution}
+  \subsubsection{Substitution}
   On remarque aussi que dans l'exemple au-dessus, on a substitué le mot "you" à l'entrée par "I"
   à la sortie. De telles substitutions sont aussi définies dans la liste d'un mot clé donné.  
   \todo[inline]{exemple.}
   
-  \subsubsection*{Classement des mots clés}
+  \subsubsection{Classement des mots clés}
   ELIZA contient aussi un mécanisme pour classer les mots clé par importance. D'où le besoin 
   pour ceci ? \todo[inline]{exemple.} Pendant le scan de la phrase à l'entrée, 
   ELIZA utilise une autre liste pour tenir compte des mots clé rencontrés, et pour les garder 
   ordonnés par leur importance.
   
-  \subsubsection*{Dernière réassamblage utilisé}
+  \subsubsection{Dernière réassamblage utilisé}
   Lorsqu'une règle de réassamblage correspondante à une décomposition 
-  est utilisée, son indice va être sauvegardée. 
-  Lors de la prochaine utilisation de cette décomposition, l'indice 
-  va permettre à ELIZA d'utiliser une autre règle de réassamblage. 
+  est utilisée, son indice est sauvegardé. 
+  Lors de la prochaine utilisation de cette décomposition, cet indice 
+  va permettre à ELIZA d'utiliser la règle de réassamblage qui suit la dernière utilisée. 
   Elle va utiliser chaque réassamblage avant de revenir sur un qu'on a déjà vu. 
   Ceci rend les réponses de ELIZA plus riches.
   
-  \subsubsection*{Mémoire}
-  Un mécanisme très simple mais qui pourtant produit des résultats impressionnants est celui 
+  \subsubsection{Mémoire}
+  Un mécanisme très simple, mais qui pourtant produit des résultats impressionnants est celui 
   de la mémoire. Il permet à ELIZA de répondre à l'utilisateur même si aucun mot clé n'est trouvé 
   dans l'entrée. La réponse va donc faire référence à quelque chose que l'utilisateur a dit 
   précédemment. Considérons la structure suivante : 
@@ -360,12 +366,12 @@ en quatre parties :
   Le mot clé "MY" va alors servir à insérer des phrases dans la mémoire. Lorsque ce mot clé 
   est choisi comme le plus important par le mécanisme de classement à la fin de la lecture 
   de l'entrée, l'une des transformations de la structure de mémoire est choisie aléatoirement. 
-  Une copie de l'entrée est alors transformée est sauvegardée dans une pile. Le reste de processus 
+  Une copie de l'entrée est alors transformée est sauvegardée dans une pile. Le reste du processus 
   continue comme on l'a déjà décrit. Si jamais une entrée future n'admet aucun mot clé, une réponse 
   est dépilée de la pile de mémoire et elle est envoyée à l'utilisateur. Ce mécanisme ajoute 
   beaucoup à l'effet que ELIZA pouvait produire sur ces utilisateur. 
 
-      \subsubsection*{Discussion}
+      \subsubsection{Discussion}
 Dans son livre \textit{Computer Power and Human Reason: From Judgement to Calculation}, 
 Weizenbaum nous raconte des anecdotes parlant des premiers utilisateurs de ELIZA, 
 qui devenait parfois attachés émotionnellement au programme. Ou l'exemple de sa 
@@ -375,14 +381,15 @@ puisse avoir une vraie conversation avec ELIZA.
 \begin{quote}
   I had not realized that extremely short exposures to a relatively simple computer program could 
   induce powerful delusional thinking in quite normal people.
+  \cite{weizenbaum-book}
 \end{quote}
 
 On pourrait alors considérer ELIZA comme l'un des premiers programmes capables de tenter 
 le test de Turing, et aussi capable de le passer sous certaines conditions. 
-D'après une étude réalisée à UC San Diego qui demandait à ses volontaires de converser 
+D'après une étude réalisée à UC San Diego \cite{eliza-gpt} qui demandait à ses volontaires de converser 
 par message soit avec un programme, soit avec un vrai humain, et de décider si la personne 
 avec laquelle ils parlaient était un humain ou pas, ELIZA était plus performante que GPT 3.5. 
-Ceci est assez incroyable, considérant la simplicité et légèreté de ELIZA d'un point de vue 
+Ceci est assez incroyable, considérant la simplicité et légèreté d'ELIZA d'un point de vue 
 informatique. Weizenbaum a réussi à créer un programme qui ne sait rien sur le monde réel, 
 et qui arrive quand-même à tenir une conversation avec un humain en restant relativement 
 convaincant. Tout ça en 1966 ! 
@@ -395,7 +402,7 @@ que j'en ai mis pour ELIZA. Je trouve cette comparaison juste, car je crois que 
 détail que j'ai atteint dans les deux cas est à peu près le même. }
 
 
-  \subsection*{ALPAC report} 
+  \subsection{ALPAC report} 
   ALPAC (Automatic Language Processing Advisory Committee) était une commission de 7 scientifiques, 
   dont le dirigeant John R. Pierce (un ingénieur américain), 2 linguistes, 2 chercheurs en traduction 
   automatique (TA en abrégé), un psychologue et un chercheur en IA, 
@@ -432,13 +439,36 @@ détail que j'ai atteint dans les deux cas est à peu près le même. }
   Malheureusement, le rapport n'a pas reconnu le potentiel de la TA, et sa publication 
   a beaucoup endommagé le développement du domaine.   
 
-  \section*{Approche statistique}
-  \section*{Approche neuronale}
+  \section{Approche statistique}
+  \section{Approche neuronale}
 
 \chapter{Word embedding}
-  \section*{Principe sur un exemple simple}
-Le word embedding (en français : vectorisation de mots, plongement lexical, ou bien enchâssement de mots)
-est la notion de représenter un mot par un vecteur, le plus souvent un vecteur réel.
+  \section{Introduction}
+  Le word embedding (en français : vectorisation de mots, plongement lexical, ou bien enchâssement de mots)
+est la notion de représenter un mot par un vecteur réel. Cette représentation code la sémantique
+des mots, en sorte à ce que les vecteurs de mots similaires en signification soient proches 
+dans l'espace vectoriel. 
+
+Grâce à cette représentation numérique, on obtient des nombreuses 
+possibilités d'analyse du texte. On peut trouver les mots les plus similaires à un mot donné 
+dans un texte, et on peut faire pareil pour les phrases (moteurs de recherche, autocorrection). 
+On peut analyser de différents documents et obtenir un résumé de leur contenu, de l'opinion 
+ou de l'émotion qui se trouve dedans. 
+
+En plus, dès qu'on représente des mots numériquement, on peut commencer à les passer à un 
+modèle d'apprentissage automatique, où le nombre d'utilisations possibles devient 
+énorme. Il s'agit donc aussi d'un traitement initial qui nous permet 
+d'utiliser des méthodes ML.
+
+Il existe de différentes méthodes pour construire les word embeddings. 
+
+
+
+
+
+
+
+  \section{Principe sur un exemple simple}
 
 Pour expliquer l'intérêt de cette idée, je vais utiliser un exemple qui vient de 
 \textit{Understanding word vectors} de Allison Parish. Considérons la table suivante qui décrit quelques 
@@ -498,7 +528,7 @@ taille de l'animal, on regarde la relation mathématique entre deux mots
 (la poule et le chaton), et on utilise cette information pour déduire une \textbf{rélation sémantique} entre deux mots différents
 (la tarantule et le hamster). Incroyablement simple et puissant en même temps.
 
-\section*{Sémantique distributionnelle}
+\section{Sémantique distributionnelle}
 Dans les applications réelles des word embeddings, le principe reste le même, mais le processus devient plus 
 compliqué. Les mots à l'entrée vont être beaucoup plus nombreux - on peut imaginer un ensemble 
 des centaines de milliers de mots. Ensuite, comment fait-on pour associer un vecteur à chacun
@@ -594,7 +624,7 @@ pratique. Grâce à des techniques de réduction de dimensionalité, on peut tra
 d'information. Je laisse les détails de cette 
 transformation de côté, peut-être si j'ai le temps à la fin.  
 
-\section*{Démonstration}
+\section{Démonstration}
 Il existe de nombreuses collections de vecteurs déjà prêtes qu'on 
 peut télécharger et utiliser dans nos projets. Dans l'exemple suivant, 
 on utilisera une collection de 514 000 vecteurs de mot en anglais à 300 dimensions. 
