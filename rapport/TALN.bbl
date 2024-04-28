@@ -24,12 +24,13 @@ Les contributeurs~de Wikipédia.
 
 \bibitem{eliza-original}
 Joseph WEIZENBAUM.
-\newblock Eliza - a computer program for the study of natural language
-  communication between man and machine, 1966.
+\newblock \textit{ELIZA - A Computer Program For the Study of Natural Language
+  Communication Between Man And Machine}, 1966.
 
 \bibitem{eliza-gpt}
-UC~San~Diego Cameron R.~JONES, Benjamin K.~BERGEN.
-\newblock Does gpt-4 pass the turig test?, 2024.
+\textup{Cameron R. JONES, Benjamin K. BERGEN, UC San Diego}.
+\newblock \textit{Does GPT-4 pass the Turig test?}, 2024.
+\newblock Consulté en avril 2024 (version archivée de l'article original).
 
 \bibitem{weizenbaum-book}
 Joseph WEIZENBAUM.
@@ -37,5 +38,18 @@ Joseph WEIZENBAUM.
   Calculation}.
 \newblock W. H. Freeman and Company, 1976.
 \newblock Page 7.
+
+\bibitem{alpac-original}
+Automatic Language Processing~Advisory Committee.
+\newblock \textit{Language and Machines: Computers in Translation and
+  Linguistics} \textup{(connu plutôt sous "ALPAC report")}.
+\newblock 1996.
+\newblock Version archivée de l'article sur le site.
+
+\bibitem{alpac-hutchins}
+John HUTCHINS.
+\newblock \textit{ALPAC: the (in)famous report}.
+\newblock {\em MT News International}, June(14):9--12, 1996.
+\newblock Version archivée de l'article sur le site.
 
 \end{thebibliography}
