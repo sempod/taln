@@ -449,67 +449,87 @@ détail que j'ai atteint dans les deux cas est à peu près le même. }
 \chapter{Word embedding}
   \section{Introduction}
   Le word embedding (en français : vectorisation de mots, plongement lexical, ou bien enchâssement de mots)
-est la notion de représenter un mot par un vecteur réel. Cette représentation code la sémantique
-des mots, en sorte à ce que les vecteurs de mots similaires en signification soient proches 
-dans l'espace vectoriel. 
+est la notion de représenter un mot par un vecteur (réel), en sorte que ça code leur sémantique.
+L'idée principale étant que dès qu'on a des vecteurs, on peut faire des maths dessus. Et si ce 
+codage de nos mots est bien fait, on s'attend à ce que les opérations mathématiques qu'on peut 
+faire sur les vecteurs correspondent à des rélations sémantiques entre nos mots. 
+
+Par exemple, on pourrait se demander quel est le vecteur le plus proche du vecteur qui représente 
+le mot "chien". Si notre word embedding est bien fait, on s'attend à trouver dans sa proximité 
+les vecteurs des mots comme "chiot", "Rex", "berger", etc. 
+
+On peut aussi additionner des vecteurs. Imaginons qu'on prend le vecteur du mot "repas", et on lui 
+ajoute le vecteur du mot "viande". On voudrait que le vecteur résultat soit proche des vecteurs 
+des mots comme "steak haché", "poulet rôti", "boef bourgignon", "guláš", etc. 
+
+La soustraction nous donne l'exemple le plus connu du word embedding, qui mathématiquement 
+s'exprime ainsi : 
+\begin{align*}
+  \overrightarrow{roi} \ - \ \overrightarrow{homme} \ + \ \overrightarrow{femme} \approx \overrightarrow{reine}
+\end{align*}
+
+Comme le dernier exemple : ça serait quoi la moyenne entre les vecteurs des mots "nuit" et "jour" ?
 
 Grâce à cette représentation numérique, on obtient des nombreuses 
-possibilités d'analyse du texte. On peut trouver les mots les plus similaires à un mot donné 
-dans un texte, et on peut faire pareil pour les phrases (moteurs de recherche, autocorrection). 
+possibilités d'analyse sémantique de texte. On peut trouver les mots les plus similaires à un mot donné, 
+et on peut faire pareil pour les phrases (moteurs de recherche, autocorrection). Pour obtenir 
+le vecteur d'une phrase, il suffit de prendre la moyenne des vecteurs de ses mots.  
 On peut analyser de différents documents et obtenir un résumé de leur contenu, de l'opinion 
-ou de l'émotion qui se trouve dedans. 
+ou de l'émotion qui se trouve dedans. On peut mésurer la similarité entre document, sémantiquement
+parlant. 
 
-En plus, dès qu'on représente des mots numériquement, on peut commencer à les passer à un 
-modèle d'apprentissage automatique, où le nombre d'utilisations possibles devient 
-énorme. Il s'agit donc aussi d'un traitement initial qui nous permet 
-d'utiliser des méthodes ML.
-
-Il existe de différentes méthodes pour construire les word embeddings. 
-
-
-
-
-
+Les word embedding sont également essentiels pour l'apprentissage automatique. 
+Ici, ils servent d'un prétraitement avant de passer les données au modèle de ML ou de DL. 
+On a bien besoin de représenter nos données textuelles par quelque chose mathématique (des vecteurs), 
+si on veut les passer à un modèle d'apprentissage automatique. Ainsi le nombre de cas d'usage 
+du word embedding devient énorme. 
 
 
   \section{Principe sur un exemple simple}
 
-Pour expliquer l'intérêt de cette idée, je vais utiliser un exemple qui vient de 
-\textit{Understanding word vectors} de Allison Parish. Considérons la table suivante qui décrit quelques 
+Regardons maintenant un word embedding concret, très simple. Ce qui suit est essentiellement une 
+traduction de \cite[\textit{Understanding word vectors}, Allison PARISH]{understanding-word-vectors} 
+en français. Considérons la table dans fig. \ref{fig:animaux-word-embedding} qui décrit quelques 
 animaux en fonction de leur mignonnerie et leur taille. 
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.6\textwidth]{animal-table.png}
-  \caption{This is an example image.}
-  \label{fig:example}
+  \caption{Word embedding d'animaux.}
+  \label{fig:animaux-word-embedding}
 \end{figure}
 
-Regardons ce que ça donne en tant qu'espace de vecteurs 2D. 
+Sur fig. \ref{fig:animaux-word-embedding-2d}, vous pouvez voir 
+ce que ça donne en tant qu'espace de vecteurs 2D. 
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.6\textwidth]{animal-space.png}
-  \caption{This is an example image.}
-  \label{fig:example}
+  \caption{Word embedding d'animaux en 2D.}
+  \label{fig:animaux-word-embedding-2d}
 \end{figure}
 
-On a associé un objet mathématique (un vecteur 2D) à chaque animal de notre table, certes d'une façon
-assez arbitraire, mais pourtant intuitive. Le plus important : on peut maintenant raisonner sur les animaux en 
-utilisant les notions de l'algèbre linaire. Par exemple, avec la distance euclidienne, on peut facilement 
-vérifier que le cheval et le dauphin sont quasiment les mêmes, quant à nos deux caractéristiques 
-(assez mignons et grands). Pareil pour le chiot et le chatons (petits et très mignons), ou bien la 
-tarantule et le moustique (très petits et pas du tout mignons). On peut aussi faire des opérations sur 
-les vecteurs. Prenons la différence entre le chaton et la poule et ajoutons-la à la tarantule. 
+Cet exemple très simple est bien un word embedding : on a associé un vecteur 2d à chaque mot 
+de notre table. Certes, d'une façon arbitraire, mais pourtant intuitive, et on croit que les 
+valeurs qu'on a choisies codent bien les rélations sémantiques entre nos animaux. On peut désormais 
+tester les opérations dont on a parlé dans la partie précédente, pour voir si notre word embedding 
+est bien fait. 
+
+Remarquons que le cheval et le dauphin sont proches l'un de l'autre. Deux animaux assez mignons et grands, 
+d'après notre embedding (même si les dauphins ne sont parfois pas si mignons que ça...). Similairement pour 
+le chaton et le chiot, deux animaux qui sont petits et très mignons, ou bien la tarantule et le moustique, 
+très petits et pas du tout mignons. Prenons maintenant la différence entre le chaton et le poussain et ajoutons-la 
+à la tarantule. Voyons ceci sur la fig. \ref{fig:tarantule-hamster}. 
+
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.6\textwidth]{animal-space-dif.png}
-  \caption{This is an example image.}
-  \label{fig:example}
+  \caption{La tarantule au hamster.}
+  \label{fig:tarantule-hamster}
 \end{figure}
 
-On observe que la pointe du vecteur bleu est le plus près du vecteur qui représent le hamster.
+La pointe du vecteur bleu est le plus près du vecteur qui représent le hamster.
 Mathématiquement, cela s'écrirait :
 
 \begin{align*}
@@ -519,25 +539,28 @@ Mathématiquement, cela s'écrirait :
 Et en français : 
 
 \begin{center}
-  Les tarentules sont aux hamsters ce que les poules sont aux chatons. 
+  Les tarentules sont aux hamsters ce que les poussin sont aux chatons. 
 \end{center}
 
 C'est-à-dire un animal un peu plus petit et beaucoup moins mignon, ce qui est assez 
-correcte. 
+correcte. On suppose ici que les poussins sont moins mignons que les chatons... bon, 
+il y a pas mal de gens qui seraient d'accord, on le laisse comme ça. 
 
-Qu'est-ce qui vient de se passer ? On a fait du word embedding sur les 
-mots d'animaux, ce qui nous a permis d'analyser leur sémantique par la suite : 
-on commence en associant un vecteur à chaque mot en fonction de la mignonnerie et la 
+On a vu un word embedding sur quelques mots d'animaux, qui nous a permis d'analyser leur sémantique.  
+On associe un vecteur à chaque mot en fonction de la mignonnerie et la 
 taille de l'animal, on regarde la relation mathématique entre deux mots
-(la poule et le chaton), et on utilise cette information pour déduire une \textbf{rélation sémantique} entre deux mots différents
-(la tarantule et le hamster). Incroyablement simple et puissant en même temps.
+(le poussin et le chaton), et on utilise cette information pour déduire une \textbf{rélation sémantique} 
+entre deux mots différents (la tarantule et le hamster). 
+Incroyablement simple et puissant en même temps.
 
 \section{Sémantique distributionnelle}
 Dans les applications réelles des word embeddings, le principe reste le même, mais le processus devient plus 
 compliqué. Les mots à l'entrée vont être beaucoup plus nombreux - on peut imaginer un ensemble 
 des centaines de milliers de mots. Ensuite, comment fait-on pour associer un vecteur à chacun
 de ces mots ? Dans l'exemple précédent, on a attribué des valeur arbitraires à chaque mot 
-manuellement, ce qui ne sera plus possible à cause de leur quantité. Heureusement qu'il y a la 
+manuellement, ce qui ne sera plus possible à cause de leur quantité. On veut aussi quelque chose de général et 
+automatisable. On veut qu'un ordinateur soit capable de produire le word embedding, sans devoir philosopher 
+sur la question : est-ce qu'un poussin est plus mignon qu'un chaton ? Heureusement qu'il y a la 
 hypothèse distributionnelle. 
 
 \begin{hyp}[hypothèse distributionnelle]
@@ -545,10 +568,10 @@ hypothèse distributionnelle.
   le texte. 
 \end{hyp}
 
-Cette hypothèse dûe à J. R. Firth nous dit que ce qui détermine le sémantique d'un mot 
-sont les mots qui se trouvent à ses côtés dans la phrase. Prenons les mots 
-beau, froid et chaud et regardons des exemples de 
-phrases qui utilisent ces mots : 
+Cette hypothèse dûe à J. R. Firth (linguiste britannique des années 1950s) nous dit que ce qui détermine la 
+sémantique d'un mot, ce sont les mots qui se trouvent à ses côtés dans la phrase. Prenons les mots 
+\textit{beau}, \textit{froid} et \textit{chaud}, et regardons des exemples de 
+phrases qui les emploient : 
 
 \begin{center}
   Il a fait \underline{bien} \textbf{froid} \underline{hier}. \\
@@ -557,22 +580,23 @@ phrases qui utilisent ces mots :
   Est-ce qu'il va faire \underline{très} \textbf{froid} \underline{mardi} ?
 \end{center}
 
-Il s'agit des phrases tout à fait naturelles, et on peut déjà observer que les trois mots 
+Il s'agit des phrases naturelles, et on peut déjà observer que les trois mots 
 ont une tendance à se trouver entre un adverbe (bien, hyper, très) et un mot indiquant 
 un jour (hier, aujourd'hui, demain, mardi). Par la hypothèse distributionnelle, ces trois mots 
 devraient avoir une sémantique similaire, car ils ont le même 
 contexte. Ceci est tout à fait vrai, tous les trois mots sont utilisés pour décrire le temps. 
 Une telle sémantique s'appelle alors comme la hypothèse - distributionnelle. 
 
-Cette approche nous permettra d'assiocer des vecteurs aux mots d'un corpus de taille 
+Cette approche nous permettra d'assiocer des vecteurs aux mots d'une entrée de taille 
 arbitraire, et en plus automatiquement. Regardons sur un exemple :
 \begin{center}
   It was the best of times, it was the worst of times.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
 \end{center}
-Comme le contexte, on considérera juste le voisin gauche et le voisin droite. La 
-première ligne de la table suivante contient tous les contextes possibles (nb : même si 
-"it was the" a deux occurrences dans notre phrase, le contexte correspondant "it \textunderscore \ the" 
-ne se trouve qu'une fois dans la table). La première colonne contient tous les mots sans répétition.
+Comme le contexte, on considérera juste le voisin gauche et le voisin droite de chaque mot. La 
+première ligne de la table \ref{tab:sémantique-distr-exemple} contient tous les contextes possibles 
+Même si "it was the" a deux occurrences dans notre phrase, le contexte correspondant 
+"it \textunderscore \ the" ne se trouve qu'une fois dans la table. On prend les contextes sans répétition.
+La première colonne contient tous les mots, aussi sans répétition.
 Finalement, pour chaque mot, les valeur dans sa ligne indique combien de fois il se trouve dans le contexte
 spécifié.  
 
@@ -608,15 +632,17 @@ spécifié.
         \hline  
     \end{tabular}%
     }
-    \caption{Exemple de contexte} 
-    \label{tab:example} 
+    \caption{Contextes d'une phrase.} 
+    \label{tab:sémantique-distr-exemple} 
 \end{table}
 
-On observe que les vecteurs pour les mots \textit{best} et \textit{worst} sont les mêmes :
-$[0,0,0,1,0,0,0,0,0,0]$. La distance euclidienne entre les deux est donc zéro, et par la 
+On observe que les vecteurs des mots \textit{best} et \textit{worst} sont les mêmes :
+$[0,0,0,1,0,0,0,0,0,0]$. La distance euclidienne entre les deux est zéro, et par la 
 hypothèse distributionnelle, ces deux mots devraient avoir la même signification. Ce n'est pas 
 tout à fait le cas, car \textit{best} et \textit{worst} sont des antonymes, pas des synonymes. 
-Pourtant, leurs sémantiques sont très proches, et on a réussi à le reconnaître. 
+Pourtant, leurs sémantiques sont très proches, et on a réussi à le reconnaître.
+Cette façon d'obtenir un word embedding s'appelle \textit{count-based} : on compte le nombre de fois 
+qu'un mot apparaît dans un contexte pour obtenir son vecteur.  
 
 Dans l'exemple précédent, notre corpus (l'entrée textuelle) consistait en une phrase, ce qui 
 nous a donné 10 contextes : 10 positions possible pour un mot.  
@@ -624,45 +650,45 @@ En réalité, on est emmené à utiliser des corpus beaucoup plus grands, où on
 milliers ou mêmes des millions de contextes possibles - des vecteurs à des milliers ou des 
 millions de dimensions. On se doute que ce ne serait pas très 
 pratique. Grâce à des techniques de réduction de dimensionalité, on peut transformer des vecteurs 
-énormes en vecteurs de taille plus raisonnable : environ 100-300, sans perdre trop 
+énormes en vecteurs de dimension plus raisonnable : environ 100-300, sans perdre trop 
 d'information. Je laisse les détails de cette 
-transformation de côté, peut-être si j'ai le temps à la fin.  
+transformation de côté (c'est des maths).
 
 \section{Démonstration}
 Il existe de nombreuses collections de vecteurs déjà prêtes qu'on 
 peut télécharger et utiliser dans nos projets. Dans l'exemple suivant, 
-on utilisera une collection de 514 000 vecteurs de mot en anglais à 300 dimensions. 
+on utilisera la collection \textit{en\_core\_web\_lg}, disponible dans la bibliothèque Python 
+\textit{SpaCy}. Il s'agit de 514 000 vecteurs de mots 
+anglais à 300 dimensions, provenant de plusieurs sources. 
 Ca fait beaucoup de vecteurs. 
 
-La démonstration suivante est elle aussi fortement inspirée de 
-\textit{Understanding word vectors} de Allison Parrish, comme je ne suis pas 
-très original et surtout je n'ai pas le temps de développer un exemple intéressant 
+Cette démonstration est elle aussi fortement inspirée par
+\cite[\textit{Understanding word vectors}, Allison PARISH]{understanding-word-vectors} (tout ce que j'ai changé c'est le livre),
+comme je ne suis pas très original et surtout je n'ai pas le temps de développer un exemple intéressant 
 moi-même. Pour cela, il faudrait vraiment plonger dans le sujet, et ce n'est pas 
 possible, sachant qu'on est à la fin du semeste :)
 
-Je vais utiliser l'un de mes livres préféré comme le corpus. Il s'agit de 
-Joyland, écrit par Stephen King. Pour vous mettre un peu dans l'ambiance, 
-Joyland parle d'un jeune homme du nom Devin Jones. Devin a 21 ans, il fait 
-des études d'anglais, il rêve de devenir écrivant mais sinon il ne sait pas 
+Je vais utiliser l'un de mes livres préféré comme le corpus : 
+\textit{Joyland}, écrit par Stephen King. Pour vous mettre un peu dans l'ambiance, 
+\textit{Joyland} parle d'un jeune homme du nom Devin Jones. Devin a 21 ans, il fait 
+des études d'anglais, il rêve de devenir écrivant, mais sinon il ne sait pas 
 quoi faire de sa vie. Sa copine vient de le larguer, et donc au lieu de 
 passer les vacances d'été avec elle, il les passe à travailler dans un parc 
-d'attraction. Ici il trouve des amis, un boulot qui le plaît. Un peu plus tard, 
+d'attraction. Ici il trouve des amis et un boulot qui lui plaît. Un peu plus tard, 
 il fait enfin la connaissance de la jolie femme blonde qui habite dans l'une des maisons 
 qui bordent la plage que Devin traverse pour se rendre au parc. Il y a aussi 
 un mystère à résoudre (c'est du Stephen King) : une suite de meurtres de jeunes 
 filles, toutes dans des parcs d'attraction, incluant celui où Devin passe son été. 
 Tout ça dans une vibe des années 70 en Caroline du Nord. 
 
-On va utiliser SpaCy pour traiter le corpus et pour pouvoir jouer avec les 
-vecteurs de mot. Voici le code (les commentaires sont en anglais mais je crois que 
-çe ira) : 
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=1\textwidth]{code1.png}
-  \caption{This is an example image.}
-  \label{fig:example}
-\end{figure}
+On va charger le texte de \textit{Joyland} comme l'entrée, et on va utiliser les 
+vecteurs déjà disponibles grâce à SpaCy pour analyser ce texte. On va utiliser que 
+des mots unique du livre, et en plus que des mots du livre qui ont un vecteur dans le 
+modèle. Les rélations sémantiques sont détérminées par le modèle déjà entraîné, mais 
+les résultats vont nous quand même donner des information sur notre entrée spécifique. 
+Cet exemple représente ce qui se passe lorsqu'on utilise un word embedding pour analyser 
+la sémantique d'un document, par exemple pour déterminer l'émotion principale d'un commentaire.
+Voici le code (les commentaires sont en anglais mais je crois que ça ira) : 
 
 \begin{lstlisting}[language=Python]
   from __future__ import unicode_literals
@@ -748,7 +774,6 @@ Toujours un bon dîner mais un peu plus carnivore.
   ['food', 'meat', 'seafood', 'chicken', 'pork']
 \end{lstlisting}  
 
-\chapter{Deep Learning pour le TALN}
 \chapter{Conclusion}
 
 \bibliographystyle{unsrt}

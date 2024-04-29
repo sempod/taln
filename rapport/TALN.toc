@@ -18,8 +18,7 @@
 \contentsline {section}{\numberline {2.3}Approche neuronale}{10}{}%
 \contentsline {chapter}{\numberline {3}Word embedding}{11}{}%
 \contentsline {section}{\numberline {3.1}Introduction}{11}{}%
-\contentsline {section}{\numberline {3.2}Principe sur un exemple simple}{11}{}%
-\contentsline {section}{\numberline {3.3}Sémantique distributionnelle}{13}{}%
-\contentsline {section}{\numberline {3.4}Démonstration}{15}{}%
-\contentsline {chapter}{\numberline {4}Deep Learning pour le TALN}{19}{}%
-\contentsline {chapter}{\numberline {5}Conclusion}{20}{}%
+\contentsline {section}{\numberline {3.2}Principe sur un exemple simple}{12}{}%
+\contentsline {section}{\numberline {3.3}Sémantique distributionnelle}{14}{}%
+\contentsline {section}{\numberline {3.4}Démonstration}{16}{}%
+\contentsline {chapter}{\numberline {4}Conclusion}{19}{}%

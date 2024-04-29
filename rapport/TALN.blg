@@ -15,46 +15,48 @@ Warning--entry type for "eliza-original" isn't style-file defined
 --line 30 of file bibliographie.bib
 Warning--entry type for "eliza-gpt" isn't style-file defined
 --line 40 of file bibliographie.bib
+Warning--entry type for "understanding-word-vectors" isn't style-file defined
+--line 124 of file bibliographie.bib
 Warning--empty journal in alpac-original
-You've used 9 entries,
+You've used 10 entries,
             1791 wiz_defined-function locations,
-            481 strings with 4672 characters,
-and the built_in function-call counts, 1243 in all, are:
-= -- 99
-> -- 36
+            485 strings with 4771 characters,
+and the built_in function-call counts, 1368 in all, are:
+= -- 108
+> -- 40
 < -- 0
-+ -- 18
-- -- 9
++ -- 20
+- -- 10
 * -- 23
-:= -- 199
-add.period$ -- 29
-call.type$ -- 9
-change.case$ -- 8
+:= -- 219
+add.period$ -- 32
+call.type$ -- 10
+change.case$ -- 9
 chr.to.int$ -- 0
-cite$ -- 10
-duplicate$ -- 57
-empty$ -- 163
-format.name$ -- 9
-if$ -- 285
+cite$ -- 11
+duplicate$ -- 62
+empty$ -- 181
+format.name$ -- 10
+if$ -- 314
 int.to.chr$ -- 0
-int.to.str$ -- 9
+int.to.str$ -- 10
 missing$ -- 4
-newline$ -- 50
-num.names$ -- 9
-pop$ -- 56
+newline$ -- 55
+num.names$ -- 10
+pop$ -- 64
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 27
+skip$ -- 29
 stack$ -- 0
 substring$ -- 12
-swap$ -- 8
+swap$ -- 9
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 1
-while$ -- 10
-width$ -- 10
-write$ -- 92
-(There were 7 warnings)
+while$ -- 11
+width$ -- 12
+write$ -- 101
+(There were 8 warnings)

@@ -602,11 +602,6 @@ INPUT ./animal-space-dif.png
 INPUT animal-space-dif.png
 INPUT ./animal-space-dif.png
 INPUT ./animal-space-dif.png
-INPUT ./code1.png
-INPUT ./code1.png
-INPUT code1.png
-INPUT ./code1.png
-INPUT ./code1.png
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmtt9.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr9.tfm
