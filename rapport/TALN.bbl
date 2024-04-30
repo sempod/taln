@@ -52,9 +52,50 @@ John HUTCHINS.
 \newblock {\em MT News International}, June(14):9--12, 1996.
 \newblock Version archivée de l'article sur le site.
 
+\bibitem{wikipedia-wembedding}
+Les contributeurs~de Wikipédia.
+\newblock \textit{Word embedding}.
+\newblock Consulté en avril 2024.
+
+\bibitem{wikipedia-wembedding-fr}
+Les contributeurs~de Wikipédia.
+\newblock \textit{Plongement lexical}.
+\newblock Consulté en avril 2024.
+
 \bibitem{understanding-word-vectors}
 Allison PARISH.
 \newblock \textit{Understanding word vectors}.
 \newblock Consulté en avril 2024.
+
+\bibitem{wikipedia-distributional-semantics}
+Les contributeurs~de Wikipédia.
+\newblock \textit{Distributional semantics}.
+\newblock Consulté en avril 2024.
+
+\bibitem{gensim-tuto}
+Radim ŘEHŮŘEK.
+\newblock \textit{Topics and Transformations}.
+\newblock Consulté en avril 2024.
+
+\bibitem{wikipedia-word2vec}
+Les contributeurs~de Wikipédia.
+\newblock \textit{Word2vec}.
+\newblock Consulté en avril 2024.
+
+\bibitem{wikipedia-word2vec-fr}
+Les contributeurs~de Wikipédia.
+\newblock \textit{Word2vec (fr)}.
+\newblock Consulté en avril 2024.
+
+\bibitem{word2vec-original}
+\textup{Tomáš MIKOLOV, Kai CHEN, Greg CORRADO, Jeffrey DEAN}.
+\newblock \textit{Efficient Estimation of Word Representations in Vector
+  Space}.
+\newblock 2013.
+\newblock Version archivée de l'article sur le site.
+
+\bibitem{word2vec-semicolon}
+THE SEMICOLON.
+\newblock \textit{Word2Vec - Skipgram and CBOW}, 2018.
 
 \end{thebibliography}

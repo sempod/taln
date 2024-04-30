@@ -444,11 +444,99 @@ détail que j'ai atteint dans les deux cas est à peu près le même. }
   a beaucoup endommagé le développement du domaine.   
 
   \section{Approche statistique}
-  \section{Approche neuronale}
+  \subsection{Note historique}
+  Jusqu'aux années 1980s, l'approche symbolique dominait le traitement automatique du langage, 
+  c'est-à-dire des systèmes utilisant un grand nombre de règles écrites à la main. Listons deux
+  choses (parmi plusieurs évidemment) qui ont motivé le changement qui est apparu dans les années 
+  1980s. 
+
+  Premièrement, les théories linguistiques dites \textit{Chomskyennes} perdaient en popularité
+  (après le linguiste américain Noam Chomsky). Ces théories couvrent évidemment un grand nombre 
+  de sujets linguistique. Pour simplifier énormément, on peut dire que ces théories 
+  présentent d'une façon ou d'une autre le point de vue, que tout langage peut être décrit par 
+  un ensemble de règles. Ce n'est pas par hasard si ça nous rappelle l'approche symbolique. 
+  Par exemple, dans son livre \textit{Syntactic Structures} de 1957, Noam Chomsky argumente 
+  que le langage n'est pas une habitude ou une capacité que l'humain apprend pendant sa vie, 
+  mais que cette capacité est codée dans nos cerveaux, comme quelque chose de purement génétique.
+  Ces deux opinions différentes sur l'origine du langage se traduisent très facilement sur l'histoire 
+  du TALN. L'opinion de Noam Chomsky représente l'approche symbolique, qui essaie de trouver une 
+  explication globale pour le problème avec un ensemble de règles. L'opinion dite "béhavioriste" : 
+  le langage étant une capacité qui s'apprend pendant la vie, représente l'approche statistique 
+  et surtout neuronale. Un algorithme d'apprentissage automatique qui apprend des données 
+  numérique comme un humain apprend de ces expériences. En regardant l'état actuel du domaine, 
+  on dirait que Chomsky avec tort. 
+  
+  Un autre facteur était l'augmentation de la puissance des ordinateurs. Ceci a permis l'utilisation 
+  des algorithmes d'apprentissage automatique et l'entraînement des modèles toujours plus grands. 
+
+  \subsection{N-grammes}
+  \subsubsection{Introduction}
+  L'idée à la base des n-grammes est la suivante : étant donné le début d'une phrase, peut-on 
+  deviner le mot qui suivra ? Cette idée est assez naturelle et intuitive. Essayons de poser 
+  une question plus mathématique. Par exemple : étant donné le début d'une phrase, quelle est la \textbf{probabilité}
+  qu'un mot spécifique suivra ? Les modèles qui répondent à cette question s'appellent des 
+  \textit{modèles de langage} (\textit{language models} en anglais). Même si ce nom semble 
+  très général, il n'est donné qu'aux modèles qui cherchent la probablité qu'un mot spécifique 
+  suivra, et les n-grammes en font partie. Les modèles actuels comme GPT sont des \textit{large language models}. Eux aussi essaient 
+  de deviner le mot qui suivra, mais à grâce à leurs proportions énormes, on ajoute le mot 
+  \textit{large} pour les nommer. On peut aussi attribuer une probabilité à une phrase 
+  entière. Laquelle des deux phrases suivante a une plus grande probabilité d'apparaître 
+  dans un vrai texte ? 
+  \begin{align*}
+    &\textup{J'ai passé le matin à travailler sur le rapport qu'on doit rendre ce vendredi.} \\
+    &\textup{Travailler à vendredi le rendre passé sur le j'ai matin qu'on ce doit rapport.}
+  \end{align*}
+  
+  \subsubsection{Cas d'usage}
+  Cette probablité nous permet de choisir la meilleure option : plus probable $\approx$ plus 
+  correcte. Ceci est utilisé par exemple dans les correcteurs automatique. Avec un modèle 
+  de langage, on peut se rendre compte 
+  que la probabilité que le mot \textit{passé} suive les mots \textit{j'ai} et beaucoup plus 
+  grande que pour le mot \textit{passer}, et corriger ainsi une erreur de conjugaison. 
+  Ou bien comme un exemple plus poussé (et plus théorique aussi), imaginons qu'on veut écrire 
+  la phrase \textit{Ils sont contents.}, mais grâce à une faute de frappe, on finit avec 
+  \textit{Ils ont contents.} Cette phrase fautive, même si elle n'a aucun sens, est grammatiquement 
+  correcte, ce qui rend la faute plus difficile à trouver. Pourtant, avec un modèle de langage, 
+  on pourrait se rendre compte que la probabilité qu'un adjectif (\textit{contents}) suive 
+  les mots \textit{ils ont} est quasiment 0. 
+  \begin{quote}
+    Exercice pour le lecteur : trouver une phrase 
+    française grammatiquement ET sémantiquement correcte où \textit{ils ont} est suivi d'un 
+    adjectif. Tout ce que j'ai trouvé, ce sont des phrases où ce n'est pas le cas. 
+    \begin{align*}
+      &\textup{Ils ont \underline{trois} chiens. (un numéral)}\\
+      &\textup{Ils ont \underline{une} voiture. (un article)}\\
+      &\textup{Ils ont \underline{peur}. (un nom)}
+    \end{align*}
+  \end{quote} 
+  Ceci nous dirait qu'il y a très probablement un truc qui ne va pas dans cette phrase. 
+  On peut alors avertir l'auteur et corriger une faute qu'on n'aurait pas vu sinon. 
+
+  Un autre cas d'utilisation est dans la récognition de voix. Les deux séquences de mots
+  suivante se prononce de la même façon, mais il est clair que c'est la première qu'on veut 
+  reconnaître, plutôt que la deuxième. 
+  \begin{align*}
+    &\textup{... ma chère mère danse ...}\\
+    &\textup{... ma chaire mer dent ce}...\\
+  \end{align*}
+  En déterminant que la première phrase a une probabilité beaucoup plus grande d'exister 
+  dans un texte que la deuxième (ce qui nous dira notre modèle de langage), 
+  le système peut faire le bon choix. 
+
+  Finalement, les modèles de langage sont utiles dans la CAA (communication améliorée et 
+  alternative). Les personnes qui ne sont pas capables de parler ni d'utiliser la langue des 
+  signes utilisent parfois leur vue ou d'autres mouvement spécifiques pour choisir des mots 
+  d'une séléction. Un modèles de langage peut alors fournir des meilleures prédictions et 
+  faciliter le communication. 
+
+  \subsubsection{Fonctionnement}
+  Voici la façon naive de faire. On essaie de trouver $P(w|h)$ : la probabilité que le mot 
+  $w$ suive l'historique $h$ (le début d'une phrase par exemple). Prenons $w = \textup{que}$ et 
+  $h = \textup{c'est sûr}$.  
 
 \chapter{Word embedding}
   \section{Introduction}
-  Le word embedding (en français : vectorisation de mots, plongement lexical, ou bien enchâssement de mots)
+  \cite{wikipedia-wembedding} \cite{wikipedia-wembedding-fr} Le word embedding (en français : vectorisation de mots, plongement lexical, ou bien enchâssement de mots)
 est la notion de représenter un mot par un vecteur (réel), en sorte que ça code leur sémantique.
 L'idée principale étant que dès qu'on a des vecteurs, on peut faire des maths dessus. Et si ce 
 codage de nos mots est bien fait, on s'attend à ce que les opérations mathématiques qu'on peut 
@@ -487,7 +575,8 @@ du word embedding devient énorme.
 
   \section{Principe sur un exemple simple}
 
-Regardons maintenant un word embedding concret, très simple. Ce qui suit est essentiellement une 
+Regardons maintenant un word embedding concret, très simple. Ce qui suit dans cette 
+section est essentiellement une 
 traduction de \cite[\textit{Understanding word vectors}, Allison PARISH]{understanding-word-vectors} 
 en français. Considérons la table dans fig. \ref{fig:animaux-word-embedding} qui décrit quelques 
 animaux en fonction de leur mignonnerie et leur taille. 
@@ -554,7 +643,7 @@ entre deux mots différents (la tarantule et le hamster).
 Incroyablement simple et puissant en même temps.
 
 \section{Sémantique distributionnelle}
-Dans les applications réelles des word embeddings, le principe reste le même, mais le processus devient plus 
+\cite{wikipedia-distributional-semantics} Dans les applications réelles des word embeddings, le principe reste le même, mais le processus devient plus 
 compliqué. Les mots à l'entrée vont être beaucoup plus nombreux - on peut imaginer un ensemble 
 des centaines de milliers de mots. Ensuite, comment fait-on pour associer un vecteur à chacun
 de ces mots ? Dans l'exemple précédent, on a attribué des valeur arbitraires à chaque mot 
@@ -588,7 +677,7 @@ contexte. Ceci est tout à fait vrai, tous les trois mots sont utilisés pour d�
 Une telle sémantique s'appelle alors comme la hypothèse - distributionnelle. 
 
 Cette approche nous permettra d'assiocer des vecteurs aux mots d'une entrée de taille 
-arbitraire, et en plus automatiquement. Regardons sur un exemple :
+arbitraire, et en plus automatiquement. Regardons sur un exemple provenant de \cite{understanding-word-vectors} :
 \begin{center}
   It was the best of times, it was the worst of times.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
 \end{center}
@@ -666,7 +755,7 @@ Cette démonstration est elle aussi fortement inspirée par
 \cite[\textit{Understanding word vectors}, Allison PARISH]{understanding-word-vectors} (tout ce que j'ai changé c'est le livre),
 comme je ne suis pas très original et surtout je n'ai pas le temps de développer un exemple intéressant 
 moi-même. Pour cela, il faudrait vraiment plonger dans le sujet, et ce n'est pas 
-possible, sachant qu'on est à la fin du semeste :)
+possible, sachant qu'on est à la fin du semestre :)
 
 Je vais utiliser l'un de mes livres préféré comme le corpus : 
 \textit{Joyland}, écrit par Stephen King. Pour vous mettre un peu dans l'ambiance, 
@@ -682,13 +771,13 @@ filles, toutes dans des parcs d'attraction, incluant celui où Devin passe son �
 Tout ça dans une vibe des années 70 en Caroline du Nord. 
 
 On va charger le texte de \textit{Joyland} comme l'entrée, et on va utiliser les 
-vecteurs déjà disponibles grâce à SpaCy pour analyser ce texte. On va utiliser que 
+vecteurs déjà disponibles dans \textit{SpaCy} pour analyser ce texte. On va utiliser que 
 des mots unique du livre, et en plus que des mots du livre qui ont un vecteur dans le 
 modèle. Les rélations sémantiques sont détérminées par le modèle déjà entraîné, mais 
 les résultats vont nous quand même donner des information sur notre entrée spécifique. 
 Cet exemple représente ce qui se passe lorsqu'on utilise un word embedding pour analyser 
 la sémantique d'un document, par exemple pour déterminer l'émotion principale d'un commentaire.
-Voici le code (les commentaires sont en anglais mais je crois que ça ira) : 
+Voici le code (les commentaires sont en anglais mais je crois que ça ira) \cite{gensim-tuto}: 
 
 \begin{lstlisting}[language=Python]
   from __future__ import unicode_literals
@@ -773,6 +862,129 @@ Toujours un bon dîner mais un peu plus carnivore.
   >>> print(closest_words(tokens, vec("food") + vec("meat")))
   ['food', 'meat', 'seafood', 'chicken', 'pork']
 \end{lstlisting}  
+
+\section{Word2Vec}
+\subsection{Introduction}
+\cite{wikipedia-word2vec} \cite{wikipedia-word2vec-fr} Word2Vec est utilisé comme le nom commun de deux architectures de réseau neuronale, créés par 
+une équipe de chercheur à Google en 2013. Leurs deux modèles : CBOW et Skip-gram, étaient plus 
+rapide et plus précise que les autres modèles qui existaient à l'époque. Ils étaient capable 
+de produire un word embedding sur un corpus de 1.6 milliards de mots en moins d'un jour \cite{word2vec-original}.
+Ils ont marqué un énorme progrès dans le domaine. Par conséquence, les word embedding sont 
+devenu beaucoup plus populaires et utilisés. Ces modèles sont \textit{prediction-based} : on 
+entraîne les modèles à deviner soit le contexte étant donné un mot, soit le mot étant donné
+son contexte. On verra dans la suite comment on obtient un vecteur à partir de cette prédiction.
+Remarquons la différence avec les modèles \textit{count-based}, qu'on a déjà vu dans la partie 
+précédente.
+
+\subsection{Motivation et les langues flexionnelles}
+\cite{word2vec-original} Le but des chercheurs était de trouver un modèle qui serait capable de s'entraîner sur un corpus 
+d'un milliards de mot (en ordre de grandeur). Ils sont également capable de reconnaître 
+plusieurs degrées de similarités, ce qui est essentiel pour les langues flexionnelle. 
+Comme un exemple d'une telle langue, on peut utiliser le slovaque, dans lequel les noms 
+changent de forme en fonction de contexte d'usage et de leur rapport grammatical aux autres 
+mots dans une phrase. Voici une comparaison avec le français.
+
+\begin{center}
+  C'est une belle \underline{chaise}. To je pekná \underline{stoličk}\textbf{a}. \newline
+  J'ai acheté une \underline{chaise}. Kúpil som \underline{stoličk}\textbf{u}. \newline
+  Je suis assis sur une \underline{chaise}. Sedím na \underline{stoličk}\textbf{e}. \newline
+\end{center}
+
+On voit trois phrases en français, chacune avec son équivalent slovaque. On remarque qu'en 
+slovaque, le mot \textit{chaise} change de forme en fonction de son utilisation. Une telle 
+langue produit plusieurs mots (formes) différents pour un mot donné. Word2Vec est capable 
+de garder les vecteurs de toutes ces formes d'un mot donnée proches l'un de l'autre, 
+ce qui est évidemment très utile. C'est ce qu'on appelle alors \textit{plusieurs degrés 
+de similarité}, car la similarité entre les formes est plutôt grammaticale que 
+sémantique (on parle toujours d'une \textit{chaise}). Ceci nous permet de générer du texte 
+plus précis dans les langues flexionnelles, car avec Word2Vec on peut trouver le mot le plus 
+similaire sémantiquement, et ensuite regarder dans son voisinage pour trouver la forme 
+grammaticalement correcte. L'équipe derière Word2Vec était dirigé par Tomáš Mikolov, 
+chercheur en IA tchéque, qui a travaillé sur le traitement automatique du tchéque avant ça
+(qui est une langue flexionnelle aussi), on peut donc voir l'inspiration. 
+
+\subsection{CBOW}
+On va regarder le modèle CBOW de plus près. CBOW veut dire "continuous bag of words", ou 
+\textit{sac de mots continu} en français. Il s'agit d'un réseau de neurones très compact, 
+ne contenant que deux couches hormis l'entrée. L'entrée représente le contexte du mot que 
+le CBOW cherche à deviner. La couche cachées représente le embedding lui-même. Elle est constituée
+de quelques centaines de neurones (ce nombre correspond à la dimension des vecteurs qu'on veut 
+obtenir). La couche 
+cachée correspondra aux vecteurs de nos mots à la fin de l'entraînement. La couche de sortie 
+représente la prédiction du modèle : le mot qui a comme contexte ce qui est à l'entrée. 
+
+\subsection{Exemple concret}
+Passons sur un exemple concret traîté et expliqué dans la vidéo 
+\cite[\textit{Word2Vec - Skipgram and CBOW}, The Semicolon]{word2vec-semicolon}. 
+Ici, notre corpus n'est que la phrase "Hope can set you free". On cherche à obtenir un word 
+embedding de vecteurs à 3 dimensions, la couche cachée contient alors 3 neurones.
+
+L'entrée 
+contient un vecteur (dit \textit{hot} dans l'illustration) pour chaque mot de notre corpus. 
+Ces vecteurs sont de dimension égale au nombre de mots dans le corpus. Dans cet exemple, cela 
+donne des vecteurs de dimension 5. Pour représenter un mot à l'entrée, on remplit le vecteur 
+de 0, à part la case qui correspond à la position du mot dans le corpus, qui sera mise à 1. 
+On peut voir ceci sur l'image, même si dans l'image on ne voit que deux vecteurs d'entrée, 
+on imagine qu'il y en a pour chaque mot du corpus. 
+
+Pour la première itération, on prend le premier contexte de notre corpus. Dans cet exemple, 
+on considère des contextes de taille 3, c'est-à-dire le voisin gauche, le voisin droite et le mot lui-même.
+Notre contexte (notre entrée) est donc \textit{hope \_ set}, et on cherche à deviner le mot \textit{can}.
+On multiplie les vecteurs d'entrée par une matrice W de dimension 3x5, pour passer à la couche cachée. 
+On multiplie ensuite le vecteur de cette couche par une autre matrice W' de dimension 5x3 pour obtenir 
+un vecteur de dimension 5 à la sortie. On compare ce vecteur au vecteur du mot qu'on chercher à deviner. 
+Dans cet itération, c'est le mot \textit{can}, et donc son vecteur contient la valeur 1 dans sa deuxième 
+case, car \textit{can} est le deuxième mot du notre corpus. Le résultat est donc comparé avec le vecteur 
+du mot qu'on cherchait. On utilise ensuite des mathématiques des réseaux de neurones pour ajuster les 
+valeurs dans les cases des matrices W et W'. On déplace le contexte à droite par un mot, et on recommence 
+une autre itération. 
+changer
+Voici comment on récupère les vecteurs de nos mots a la fin de l'entraînement : la i-ème colonne de la 
+matrice W correspondra au embedding (vecteur) du i-ème mot de notre contexte. 
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.6\textwidth]{cbow.png}
+  \caption{CBOW}
+  \label{fig:cbow}
+\end{figure}
+
+
+\subsection{Alors pourquoi ça marche ?}
+Le fait qu'un modèle si simple fonctionne si bien me paraisait magique au début. Si c'est le 
+cas pour vous aussi, considérez la description suivante. 
+
+A l'entrée, on a le contexte d'un mot donné. Par la hypothèse distributionnelle, ceci code 
+sa signification. On "comprime" cette information avec la matrice W pour passer à la couche 
+cachée. On choisi la taille de la couche cachée pour correspondre à la dimensions des vecteurs 
+qu'on veut obtenir. Ensuite, on "décomprime" cette information avec la matrice W' 
+pour passer à la couche de sortie. 
+
+Ce qui est essentiel, c'est qu'on ajoute une demande  
+à cette "algo de compression", la demande étant qu'on veut que la couche de sortie 
+correspond au mot donné au début (celui au milieu du contexte). La compression et la 
+décompression sont donc obligées de garder la rélation entre le contexte et le mot dans son 
+milieu. Et comme cette rélation représente la sémantique du mot, c'est la sémantique qui sera 
+encodée dans ce processus. 
+
+A la fin, on prend simplement "l'algo de compression" qu'on a utilisé, c'est-à-dire la matrice 
+W comme notre word embedding. Cette "compression" est dans le format correcte (format qui 
+correspond aux vecteurs qu'on veut), et elle encode la rélation entre un mot et son contexte, 
+ce qui est la sémantique (par la hypothèse). Ce sont les qualités qu'on cherche dans un word 
+embedding. 
+
+Je me rends compte que cette description reste vague, mais je la trouve pas mal pour donner une
+certaine explication ou "philosphie" intuitive à ce modèle. La raison précise pour la capacité de ces 
+modèles à produire des word embeddings aussi bons n'est toujours pas connu, 
+même s'il y a des articles qui essaie de s'y approcher. 
+
+\subsection{Discussion}
+\cite{wikipedia-wembedding} Le modèle Skipgram est symétrique au CBOW. La seule différence étant qu'on prend un mot comme l'entrée, 
+et on essaie de deviner son contexte dans le corpus. En général, le CBOW est plus rapide, et le 
+Skipgram a des meilleurs résultats sur des mots rares. Ces modèles 
+seuls sont devenus dépassé, mais ils sertvent toujours comme un prétraitement pour les modèles 
+d'apprentissage profond actuels, comme les transformeurs qui représentent actuellement l'état 
+de l'art.  
 
 \chapter{Conclusion}
 

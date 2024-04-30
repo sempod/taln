@@ -1,0 +1,34 @@
+C'est naturel d'essaier de deviner le prochain mot suivant une séquence. 
+
+Les modèles qui associent une probabilité à chaque mot qui pourrait suivre s'appellent "language models" (LM).
+Les LLM qu'on utilisent aujourd'hui font ça aussi. 
+
+LM peuvent aussi attribuer une probabilité à une phrase entière. 
+	[exemple d'une phrase naturelle]
+	[exemple d'une phrase pas naturelle]
+	
+Cette probabilité nous permet de choisir la MEILLEURE option, l'option la plus probable, la plus correcte. 
+Pour les correcteurs de grammaire : 
+	THEIR are two midterms.
+	Everything has IMPROVE.
+Ou pour la recognition de voix : 
+	I will be back soonish, pas I will be bassoon dish. 
+	
+Language models can also help in augmentative and
+alternative communication systems (Trnka et al. 2007, Kane et al. 2017). People
+often use such AAC devices if they are physically unable to speak or sign but canAAC
+instead use eye gaze or other specific movements to select words from a menu. Word
+prediction can be used to suggest likely words for the menu
+
+C'est quoi un bigram, trigram, ngram
+
+P(mot|histoire) ? 
+Une façon naive de faire : relative frequency counts. 
+
+Un peu de notation pour introduire le truc. On peut pas compter le nombre de fois que le mot suit 
+une histoire, car y'a trop de possibilité d'histoires. Probabilités conditionnelles n'aide pas trop non-plus, 
+toujours trop de trucs à calculer. Markov assumption. On peut prédire un truc en regardant pas trop loin 
+dans le passé. 
+
+
+
