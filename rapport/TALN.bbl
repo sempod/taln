@@ -39,6 +39,9 @@ Joseph WEIZENBAUM.
 \newblock W. H. Freeman and Company, 1976.
 \newblock Page 7.
 
+\bibitem{weizenbaum-pic}
+
+
 \bibitem{alpac-original}
 Automatic Language Processing~Advisory Committee.
 \newblock \textit{Language and Machines: Computers in Translation and
@@ -51,6 +54,12 @@ John HUTCHINS.
 \newblock \textit{ALPAC: the (in)famous report}.
 \newblock {\em MT News International}, June(14):9--12, 1996.
 \newblock Version archivée de l'article sur le site.
+
+\bibitem{stanford-book-ngrams}
+James H.~MARTIN Daniel~JURAFSKY.
+\newblock {\em Speech and Language Processing}.
+\newblock 3ème édition en ligne, 2024.
+\newblock chapitre 3.
 
 \bibitem{wikipedia-wembedding}
 Les contributeurs~de Wikipédia.
@@ -71,6 +80,10 @@ Allison PARISH.
 Les contributeurs~de Wikipédia.
 \newblock \textit{Distributional semantics}.
 \newblock Consulté en avril 2024.
+
+\bibitem{firth-pic}
+Bulletin of the school of oriental and african studies, 1961.
+\newblock L'image de Firth. Consulté en avril 2024.
 
 \bibitem{gensim-tuto}
 Radim ŘEHŮŘEK.

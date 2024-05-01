@@ -3,33 +3,34 @@
 \contentsline {chapter}{\numberline {2}Brève histoire du TALN}{2}{}%
 \contentsline {section}{\numberline {2.1}Approche symbolique}{2}{}%
 \contentsline {subsection}{\numberline {2.1.1}l'expérience Georgetown-IBM}{2}{}%
-\contentsline {subsection}{\numberline {2.1.2}ELIZA}{4}{}%
-\contentsline {subsubsection}{Introduction}{4}{}%
-\contentsline {subsubsection}{Fonctionnement général}{5}{}%
+\contentsline {subsection}{\numberline {2.1.2}ELIZA}{5}{}%
+\contentsline {subsubsection}{Introduction}{5}{}%
+\contentsline {subsubsection}{Fonctionnement général}{6}{}%
 \contentsline {subsubsection}{Les transformations}{6}{}%
-\contentsline {subsubsection}{Décomposition et réassamblage}{6}{}%
-\contentsline {subsubsection}{Substitution}{7}{}%
-\contentsline {subsubsection}{Classement des mots clés}{7}{}%
-\contentsline {subsubsection}{Dernière réassamblage utilisé}{7}{}%
-\contentsline {subsubsection}{Mémoire}{8}{}%
-\contentsline {subsubsection}{Discussion}{8}{}%
-\contentsline {subsection}{\numberline {2.1.3}ALPAC report}{9}{}%
-\contentsline {section}{\numberline {2.2}Approche statistique}{10}{}%
-\contentsline {subsection}{\numberline {2.2.1}Note historique}{10}{}%
-\contentsline {subsection}{\numberline {2.2.2}N-grammes}{11}{}%
-\contentsline {subsubsection}{Introduction}{11}{}%
-\contentsline {subsubsection}{Cas d'usage}{11}{}%
-\contentsline {subsubsection}{Fonctionnement}{12}{}%
-\contentsline {chapter}{\numberline {3}Word embedding}{13}{}%
-\contentsline {section}{\numberline {3.1}Introduction}{13}{}%
-\contentsline {section}{\numberline {3.2}Principe sur un exemple simple}{14}{}%
-\contentsline {section}{\numberline {3.3}Sémantique distributionnelle}{16}{}%
-\contentsline {section}{\numberline {3.4}Démonstration}{18}{}%
-\contentsline {section}{\numberline {3.5}Word2Vec}{20}{}%
-\contentsline {subsection}{\numberline {3.5.1}Introduction}{20}{}%
-\contentsline {subsection}{\numberline {3.5.2}Motivation et les langues flexionnelles}{20}{}%
-\contentsline {subsection}{\numberline {3.5.3}CBOW}{21}{}%
-\contentsline {subsection}{\numberline {3.5.4}Exemple concret}{21}{}%
-\contentsline {subsection}{\numberline {3.5.5}Alors pourquoi ça marche ?}{22}{}%
-\contentsline {subsection}{\numberline {3.5.6}Discussion}{23}{}%
-\contentsline {chapter}{\numberline {4}Conclusion}{24}{}%
+\contentsline {subsubsection}{Décomposition et réassamblage}{7}{}%
+\contentsline {subsubsection}{Substitution}{8}{}%
+\contentsline {subsubsection}{Classement des mots clés}{9}{}%
+\contentsline {subsubsection}{Dernière réassamblage utilisé}{9}{}%
+\contentsline {subsubsection}{Mémoire}{9}{}%
+\contentsline {subsubsection}{Discussion}{10}{}%
+\contentsline {subsection}{\numberline {2.1.3}ALPAC report}{11}{}%
+\contentsline {section}{\numberline {2.2}Approche statistique}{13}{}%
+\contentsline {subsection}{\numberline {2.2.1}Note historique}{13}{}%
+\contentsline {subsection}{\numberline {2.2.2}N-grammes}{13}{}%
+\contentsline {subsubsection}{Introduction}{13}{}%
+\contentsline {subsubsection}{Cas d'usage}{14}{}%
+\contentsline {subsubsection}{Principe}{15}{}%
+\contentsline {subsubsection}{En pratique}{16}{}%
+\contentsline {chapter}{\numberline {3}Word embedding}{18}{}%
+\contentsline {section}{\numberline {3.1}Introduction}{18}{}%
+\contentsline {section}{\numberline {3.2}Principe sur un exemple simple}{19}{}%
+\contentsline {section}{\numberline {3.3}Sémantique distributionnelle}{21}{}%
+\contentsline {section}{\numberline {3.4}Démonstration}{23}{}%
+\contentsline {section}{\numberline {3.5}Word2Vec}{25}{}%
+\contentsline {subsection}{\numberline {3.5.1}Introduction}{25}{}%
+\contentsline {subsection}{\numberline {3.5.2}Motivation et les langues flexionnelles}{26}{}%
+\contentsline {subsection}{\numberline {3.5.3}CBOW}{26}{}%
+\contentsline {subsection}{\numberline {3.5.4}Exemple concret}{27}{}%
+\contentsline {subsection}{\numberline {3.5.5}Alors pourquoi ça marche ?}{28}{}%
+\contentsline {subsection}{\numberline {3.5.6}Discussion}{28}{}%
+\contentsline {chapter}{\numberline {4}Conclusion}{29}{}%

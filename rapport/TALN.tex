@@ -37,7 +37,8 @@
 
 \newcommand{\TALN}{traitement automatique du langage naturel}
 
-\title{Traitement automatique du langage naturel}
+\title{Traitement automatique du langage naturel \newline
+(avant deep learning)}
 \author{Václav Gregor}
 \date{\today}
 \newtheorem{hyp}{Hyp}[section]
@@ -45,6 +46,7 @@
 \begin{document}
 
 \maketitle
+
 \tableofcontents
 
 
@@ -80,11 +82,9 @@
 \chapter{Brève histoire du TALN}
   \section{Approche symbolique}
     \subsection{l'expérience Georgetown-IBM}
-    \textit{Sources de cette section : } \newline
-    \noindent \cite[Natural Language Processing (Wikipédia)]{wikipedia-nlp} \newline
-    \cite[Georgetown-IBM experiment (Wikipédia)]{wikipedia-georgetown} \newline 
-    \cite[The first public demonstration of machine translation...]{hutchins-georgetown}
-
+    \cite{wikipedia-nlp}
+    \cite{wikipedia-georgetown} 
+    \cite{hutchins-georgetown}
 Le domaine a débuté dans les années 1950. Le premier résultat 
 marquant et connu par le public général était l'expérience Georgetown-IBM en 1954. Il s'agissait d'une 
 démonstration de traduction automatique du russe vers l'anglais, comme le 
@@ -104,7 +104,6 @@ Si cette description nous rappelle la notion de
 dictionnaire assez limité, qui cherchait la traduction correspondante pour chaque 
 mot russe, et qui appliquait l'une des 6 règles pour rendre la phrase anglaise 
 à la sortie plus correcte. Regardons ceci sur un exemple. 
-
 
 \noindent \textbf{La phrase russe (en alphabet latin)} \newline 
 Vyelyichyina ugla opryedyelyayetsya otnoshyenyiyem dlyini dugi k radyiusu. \newline  
@@ -169,6 +168,20 @@ code 2 de l'entrée précédente est égal à 23. Comme ce code est vide (***), 
 équivalent de "-a" et on inverse l'ordre des deux mots (ce qui produit "of angle"). \newline
 \textit{sortie partielle : magnitude of angle}
 
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=1\textwidth]{punched-card.png}
+  \caption{Une carte perforée utilisée dans l'expérience.}
+  \label{fig:carte-perforee}
+\end{figure}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=1\textwidth]{georgetown-chercheurs.png}
+  \caption{Hurd (directeur de la division des sciences appliquées de IBM), Dostert (traducteur franco-américain) et Watson (fondateur de IBM) lors de la démonstration.}
+  \label{fig:carte-perforee}
+\end{figure}
+
 Le reste de la traduction serait trouvé similairement, on va donc s'arrêter ici. Je pense que ce 
 petit exemple est suffisant pour illustrer le fait que le programme ne fait que suivre bêtement les 
 règles "hardcodées" par les chercheurs. Avant d'être programmé, ce processus qu'on vient d'essayer 
@@ -210,12 +223,11 @@ gouvernement américain et obtenir des financement pour
 la recherche future dans ce domaine. 
   
     \subsection{ELIZA}
-    \textit{Sources de cette partie :} \newline
-    \cite[ELIZA (Wikipédia)]{wikipedia-eliza} \newline
-    \cite[L'article original de Joseph Weizenbaum sur ELIZA.]{eliza-original} \newline
-    \cite[Does GPT-4 pass the Turing test? (étude de UC San Diego)]{eliza-gpt} \newline
-    \cite[Computer Power and Human Reason (livre de Weizenbaum)]{weizenbaum-book}
-
+    \cite{wikipedia-eliza}
+    \cite{eliza-original}
+    \cite{eliza-gpt}
+    \cite{weizenbaum-book}
+    \cite{weizenbaum-pic}
       \subsubsection{Introduction}
 En 1966, ELIZA est créé par Joseph Weizenbaum - un programme pour explorer l'interaction entre les humains et 
 les machines. ELIZA est capable d'utiliser les règles définies dans un script externe pour 
@@ -331,6 +343,13 @@ en quatre parties :
   ne sont pas des mot clés. Regardons 
   d'autres mécanismes qui sont présents dans ELIZA.
 
+  \begin{figure}[t]
+    \centering
+    \includegraphics[width=1\textwidth]{eliza-keyword-detection.png}
+    \caption{Flowchart de la détection des mots clés (de l'article original sur ELIZA).}
+    \label{fig:eliza-flowchart}
+  \end{figure}
+
   \subsubsection{Substitution}
   On remarque aussi que dans l'exemple au-dessus, on a substitué le mot "you" à l'entrée par "I"
   à la sortie. De telles substitutions sont aussi définies dans la liste d'un mot clé donné.  
@@ -371,6 +390,13 @@ en quatre parties :
   est dépilée de la pile de mémoire et elle est envoyée à l'utilisateur. Ce mécanisme ajoute 
   beaucoup à l'effet que ELIZA pouvait produire sur ces utilisateur. 
 
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{eliza-script-example.png}
+    \caption{Un script pour ELIZA (de l'article original sur ELIZA).}
+    \label{fig:eliza-script}
+  \end{figure}
+
       \subsubsection{Discussion}
 Dans son livre \textit{Computer Power and Human Reason: From Judgement to Calculation}, 
 Weizenbaum nous raconte des anecdotes parlant des premiers utilisateurs de ELIZA, 
@@ -394,6 +420,13 @@ informatique. Weizenbaum a réussi à créer un programme qui ne sait rien sur l
 et qui arrive quand-même à tenir une conversation avec un humain en restant relativement 
 convaincant. Tout ça en 1966 ! 
 
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\textwidth]{weizenbaum.jpg}
+  \caption{Joseph Weizenbaum en 1977.}
+  \label{fig:weizenbaum}
+\end{figure}
+
 \textit{Il était intéressant de comparer ELIZA au programme de l'expérience de Georgetown-IBM. 
 On voit que seulement en 12 ans, la complexité et les capacités des programmes ont augmenté 
 énormément. Je m'en suis rendu compte aussi en écrivant ce rapport. Il m'a suffit de comparer 
@@ -403,10 +436,8 @@ détail que j'ai atteint dans les deux cas est à peu près le même. }
 
 
   \subsection{ALPAC report} 
-  \textit{Sources de cette partie:} \newline
-  \cite[L'article original]{alpac-original} \newline
-  \cite[ALPAC: The (in)famous report]{alpac-hutchins} \newline
-
+  \cite{alpac-original}
+  \cite{alpac-hutchins}
   ALPAC (Automatic Language Processing Advisory Committee) était une commission de 7 scientifiques, 
   dont le dirigeant John R. Pierce (un ingénieur américain), 2 linguistes, 2 chercheurs en traduction 
   automatique (TA en abrégé), un psychologue et un chercheur en IA, 
@@ -424,6 +455,13 @@ détail que j'ai atteint dans les deux cas est à peu près le même. }
   censée être \textit{automatique}. D'après le rapport, il serait plus économique et efficace 
   de garder la tâche de traduction chez les traducteurs humains, et de rediriger les financements 
   ailleurs. 
+
+  \begin{figure}[t]
+    \centering
+    \includegraphics[width=0.6\textwidth]{pierce.jpg}
+    \caption{John R. Pierce (dirigeant de la commission ALPAC).}
+    \label{fig:pierce}
+  \end{figure}
 
   Les effets de ce rapport ont été sévère pour le domaine, même s'il y a des parties du rapport qui sont 
   contestables. On peut aussi remarquer qu'il essaye d'accentuer "l'échec" de la TA. 
@@ -470,6 +508,7 @@ détail que j'ai atteint dans les deux cas est à peu près le même. }
   des algorithmes d'apprentissage automatique et l'entraînement des modèles toujours plus grands. 
 
   \subsection{N-grammes}
+  \cite{stanford-book-ngrams}
   \subsubsection{Introduction}
   L'idée à la base des n-grammes est la suivante : étant donné le début d'une phrase, peut-on 
   deviner le mot qui suivra ? Cette idée est assez naturelle et intuitive. Essayons de poser 
@@ -489,15 +528,27 @@ détail que j'ai atteint dans les deux cas est à peu près le même. }
   
   \subsubsection{Cas d'usage}
   Cette probablité nous permet de choisir la meilleure option : plus probable $\approx$ plus 
-  correcte. Ceci est utilisé par exemple dans les correcteurs automatique. Avec un modèle 
-  de langage, on peut se rendre compte 
-  que la probabilité que le mot \textit{passé} suive les mots \textit{j'ai} et beaucoup plus 
-  grande que pour le mot \textit{passer}, et corriger ainsi une erreur de conjugaison. 
-  Ou bien comme un exemple plus poussé (et plus théorique aussi), imaginons qu'on veut écrire 
+  correcte. Ceci est utilisé fortement dans l'autocomplétion et dans l'autocorrection. 
+
+  Le cas d'usage pour l'autocomplétion est évident. Une fois qu'on a frappé \textit{Je pense}, 
+  le système propose les mots qui sont les plus probable à suivre ce début de phrase : 
+  \textit{que}, \textit{qu'il}, \textit{qu'on}. En plus, on peut utiliser l'historique du 
+  texte qu'on a écrit pour mettre à jour le corpus sur lequel le modèle calcule les 
+  probabilités. On peut ainsi adapter et améliorer en continu le système.  
+  
+  Avec un modèle 
+  de langage, on peut se rendre compte que la probabilité que les mots \textit{à chaque foi\underline{d}}
+  apparaîssent dans un texte est quasiment 0, même si la probabilité que les mots \textit{à chaque} 
+  apparaîssent ensemble est assez grande. Le problème se trouve alors dans les deux derniers mots. 
+  Le modèle peut nous dire que la probabilité des mots \textit{chaque fois} est beaucoup plus grande 
+  que celle de \textit{chaque foi\underline{d}}, et on corrige ainsi une erreur de frappe. 
+
+  Ou bien imaginons qu'on veut écrire 
   la phrase \textit{Ils sont contents.}, mais grâce à une faute de frappe, on finit avec 
-  \textit{Ils ont contents.} Cette phrase fautive, même si elle n'a aucun sens, est grammatiquement 
-  correcte, ce qui rend la faute plus difficile à trouver. Pourtant, avec un modèle de langage, 
-  on pourrait se rendre compte que la probabilité qu'un adjectif (\textit{contents}) suive 
+  \textit{Ils ont contents.} Cette phrase est "correcte" dans le sens que chacun de ses mots 
+  est bien un mot français, ce qui n'était pas le cas dans l'exemple précédent.
+  Ceci rend la faute plus difficile à trouver. Pourtant, avec un modèle de langage, 
+  on peut voir que la probabilité qu'un adjectif (\textit{contents}) suive 
   les mots \textit{ils ont} est quasiment 0. 
   \begin{quote}
     Exercice pour le lecteur : trouver une phrase 
@@ -509,8 +560,13 @@ détail que j'ai atteint dans les deux cas est à peu près le même. }
       &\textup{Ils ont \underline{peur}. (un nom)}
     \end{align*}
   \end{quote} 
-  Ceci nous dirait qu'il y a très probablement un truc qui ne va pas dans cette phrase. 
+  Ceci nous dirait qu'il y ait très probablement un truc qui ne va pas dans cette phrase. 
   On peut alors avertir l'auteur et corriger une faute qu'on n'aurait pas vu sinon. 
+
+  On peut aussi corriger des erreurs grammaticale. La probabilité que le mot 
+  \textit{passé} suive les mots \textit{j'ai} et beaucoup plus grande que 
+  pour le mot \textit{passer}, ce qui nous permet de corriger une erreur de conjugaison. 
+  
 
   Un autre cas d'utilisation est dans la récognition de voix. Les deux séquences de mots
   suivante se prononce de la même façon, mais il est clair que c'est la première qu'on veut 
@@ -529,10 +585,96 @@ détail que j'ai atteint dans les deux cas est à peu près le même. }
   d'une séléction. Un modèles de langage peut alors fournir des meilleures prédictions et 
   faciliter le communication. 
 
-  \subsubsection{Fonctionnement}
+  \subsubsection{Principe}
   Voici la façon naive de faire. On essaie de trouver $P(w|h)$ : la probabilité que le mot 
   $w$ suive l'historique $h$ (le début d'une phrase par exemple). Prenons $w = \textup{que}$ et 
-  $h = \textup{c'est sûr}$.  
+  $h = \textup{c'est sûr}$. On pourrait calculer cette probabilité ainsi : 
+  \begin{align}
+    P(w|h) = \frac{C(\textup{c'est sûr que})}{C(\textup{c'est sûr})}
+  \end{align}
+  où $C(\textup{c'est sûr que})$ est le nombre de fois que "c'est sûr que" apparaît 
+  dans le corpus, et $C(\textup{c'est sûr})$ est défini analogiquement. Cette approche 
+  ne marchera pas à cause de la variabilité du langage. Le nombre de séquences de mots
+  ou de phrases  
+  correctes est tout simplement trop grand, même pour un corpus énorme comme le web.
+  Ceci veut dire qu'on ne saurait pas compter le nombre de fois qu'une séquence apparaît
+  dans le corpus, car elle y serait pas, même si elle serait tout à fait plausible et 
+  correcte. 
+
+  Voilà où rentre en scène les n-grammes. Par exemple avec un \textit{bigramme}, 
+  au lieu de trouver la probabilité en comptant les occurrences de 
+  "c'est sûr" et de "c'est sûr que", on va l'approximer en calculant la probabilité que "que" suive 
+  le dernier mot de l'historique : "sûr". Pour un \textit{trigramme}, ça serait 
+  la probabilité que "que" suive les 2 derniers mots de l'historique : \textit{c'est sûr}.
+  
+  En gros, un n-gramme va approximer la probabilité qu'un mot $w_k$ suive une séquence 
+  de mots $w_{1}, w_{2} \dots w_{k-1}$ en seulement considérant les n-1 derniers mots. 
+  En calculant une probabilité conditionnelle sur ces n-1 derniers. 
+  De gauche à droite : la probabilité qui nous intéresse, son approximation par un bigramme, 
+  et son approximation par un trigramme. 
+  \begin{align}
+    P(w_n|w_1, w_2, \dots w_{n-1}) \approx P(w_n|w_{n-1}) \approx P(w_n|w_{n-2}, w_{n-1})
+  \end{align}
+
+  La supposition ou la propriété qu'on peut deviner le prochain mot juste en regardant quelques mots en arrière 
+  qui est faite par les n-grammes, s'appelle la \textit{propriété de Markov}. Celle-ci parle 
+  d'une absence de mémoire d'un système : l'état futur ne dépend que de l'état présent, et 
+  non pas des états passés. 
+
+  \subsubsection{En pratique}
+  Imaginons qu'on ait un corpus de texte donné, sur lequel on veut calculer les bigramme 
+  probabilités. On construit une matrice où les lignes et les colonnes sont indexées par 
+  les mots du corpus. La case sur la ligne \textit{sûr} et la colonne \textit{que} contient 
+  le nombre de fois que \textit{sûr que} apparaît dans le corpus. Pour convertir cela 
+  en probabilités, il suffit de normaliser cette case par le nombre d'occurrences de \textit{sûr}
+  dans le corpus. La probabilité de la phrase \textit{C'est sûr que oui.} serait alors 
+  calculée ainsi : 
+  \begin{align*}
+    P(\textup{C'est sûr que oui.}) = P(\textup{c'est}|<)
+    P(\textup{sûr}|\textup{c'est})P(\textup{que}|\textup{sûr})
+    P(\textup{oui}|\textup{que})P(>|\textup{oui})
+  \end{align*}
+  où $<$ et $>$ sont des symboles représentant le début et la fin d'une phrase du corpus.
+  C'est une extension purement technique qui nous permet d'exprimer la probabilité 
+  conditionnelle des mots qui se trouvent au début ou à la fin d'une phrase, en traitant 
+  ces symboles comme des mots du corpus. 
+
+  Une telle matrice va contenir beaucoup de case de valeur 0. Celles-ci correspondent à 
+  des binomes de mots qui ne se trouvent pas dans notre corpus. Pourtant, un tel binome 
+  peut très bien apparaître dans la "vraie vie", et notre modèle lui associerait une 
+  probabilité 0, ce qui n'est évidemment pas correcte. Pour rémedier à ceci, il existe 
+  plusieurs techniques de \textit{lissage}, qui redistribuent les probabilités du modèle, 
+  à ce que les cases qui avaient initialement une probabilité 0 aient une probabilité
+  positive. 
+
+  En pratique, les probabilités des modèles de langage sont toujours exprimées dans 
+  l'espace logarithmique. Au lieu de travailler avec  
+  \begin{align}
+    P = p_1 p_2 p_3
+  \end{align}
+  on travaille avec 
+  \begin{align}
+    P = \textup{exp}(\textup{ln} \ p_1 + \textup{ln} \ p_2 + \textup{ln} \ p_3)
+  \end{align}
+  La raison pour ceci est que les probabilités sont par définition des flottants entre 
+  0 et 1. En multipliant plusieurs probabilités, on peut donc facilement arriver à ce qu'on 
+  appelle un \textit{soupassement arithmétique} (\textit{arithmetic underflow}) : une 
+  valeur qui est trop précise pour être calculée par l'ordinateur. Elle serait alors 
+  traîtée comme 0, ce qui n'est pas ce qu'on cherche. L'espace logarithmique nous permet 
+  d'échapper à ce problème, en transformant la multiplication en addition. 
+
+  \begin{figure}[t]
+    \centering
+    \includegraphics[width=1\textwidth]{bigram.png}
+    \caption{Exemple de bigramme probabilités \cite[\textit{Speech and Language Processing}]{stanford-book-ngrams}.}
+    \label{fig:pierce}
+  \end{figure}
+
+  Il est essentiel de bien choisir les jeux d'entrainement, de validation et de test. 
+  Le jeux d'entrainement représente le corpus de texte sur lequel on calcule les 
+  probabilités. Le jeux de validation sert à tester le modèle pendant son développement. 
+  Le jeux de test sert à évaluer le modèle final. Il est important que les jeux 
+  d'entrainement et de test soient disjoints, pour pas produire des résultats biaisés. 
 
 \chapter{Word embedding}
   \section{Introduction}
@@ -558,6 +700,7 @@ s'exprime ainsi :
 
 Comme le dernier exemple : ça serait quoi la moyenne entre les vecteurs des mots "nuit" et "jour" ?
 
+
 Grâce à cette représentation numérique, on obtient des nombreuses 
 possibilités d'analyse sémantique de texte. On peut trouver les mots les plus similaires à un mot donné, 
 et on peut faire pareil pour les phrases (moteurs de recherche, autocorrection). Pour obtenir 
@@ -572,8 +715,22 @@ On a bien besoin de représenter nos données textuelles par quelque chose math�
 si on veut les passer à un modèle d'apprentissage automatique. Ainsi le nombre de cas d'usage 
 du word embedding devient énorme. 
 
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.6\textwidth]{gulas.png}
+  \caption{Guláš.}
+  \label{fig:gulas}
+\end{figure}
+
 
   \section{Principe sur un exemple simple}
+
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{animal-table.png}
+    \caption{Word embedding d'animaux.}
+    \label{fig:animaux-word-embedding}
+  \end{figure}
 
 Regardons maintenant un word embedding concret, très simple. Ce qui suit dans cette 
 section est essentiellement une 
@@ -581,28 +738,19 @@ traduction de \cite[\textit{Understanding word vectors}, Allison PARISH]{underst
 en français. Considérons la table dans fig. \ref{fig:animaux-word-embedding} qui décrit quelques 
 animaux en fonction de leur mignonnerie et leur taille. 
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.6\textwidth]{animal-table.png}
-  \caption{Word embedding d'animaux.}
-  \label{fig:animaux-word-embedding}
-\end{figure}
-
 Sur fig. \ref{fig:animaux-word-embedding-2d}, vous pouvez voir 
 ce que ça donne en tant qu'espace de vecteurs 2D. 
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.6\textwidth]{animal-space.png}
-  \caption{Word embedding d'animaux en 2D.}
-  \label{fig:animaux-word-embedding-2d}
-\end{figure}
-
 Cet exemple très simple est bien un word embedding : on a associé un vecteur 2d à chaque mot 
 de notre table. Certes, d'une façon arbitraire, mais pourtant intuitive, et on croit que les 
 valeurs qu'on a choisies codent bien les rélations sémantiques entre nos animaux. On peut désormais 
 tester les opérations dont on a parlé dans la partie précédente, pour voir si notre word embedding 
 est bien fait. 
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.6\textwidth]{animal-space-dif.png}
+  \caption{La tarantule au hamster.}
+  \label{fig:tarantule-hamster}
+\end{figure}
 
 Remarquons que le cheval et le dauphin sont proches l'un de l'autre. Deux animaux assez mignons et grands, 
 d'après notre embedding (même si les dauphins ne sont parfois pas si mignons que ça...). Similairement pour 
@@ -610,27 +758,15 @@ le chaton et le chiot, deux animaux qui sont petits et très mignons, ou bien la
 très petits et pas du tout mignons. Prenons maintenant la différence entre le chaton et le poussain et ajoutons-la 
 à la tarantule. Voyons ceci sur la fig. \ref{fig:tarantule-hamster}. 
 
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.6\textwidth]{animal-space-dif.png}
-  \caption{La tarantule au hamster.}
-  \label{fig:tarantule-hamster}
-\end{figure}
-
 La pointe du vecteur bleu est le plus près du vecteur qui représent le hamster.
 Mathématiquement, cela s'écrirait :
-
 \begin{align*}
   \vec{c} - \vec{p} + \vec{t} \approx \vec{h} 
 \end{align*}
-
 Et en français : 
-
 \begin{center}
   Les tarentules sont aux hamsters ce que les poussin sont aux chatons. 
 \end{center}
-
 C'est-à-dire un animal un peu plus petit et beaucoup moins mignon, ce qui est assez 
 correcte. On suppose ici que les poussins sont moins mignons que les chatons... bon, 
 il y a pas mal de gens qui seraient d'accord, on le laisse comme ça. 
@@ -642,8 +778,15 @@ taille de l'animal, on regarde la relation mathématique entre deux mots
 entre deux mots différents (la tarantule et le hamster). 
 Incroyablement simple et puissant en même temps.
 
+
 \section{Sémantique distributionnelle}
-\cite{wikipedia-distributional-semantics} Dans les applications réelles des word embeddings, le principe reste le même, mais le processus devient plus 
+\begin{quote}
+  You shall know a word by the company it keeps. \newline
+  J. R. Firth, 1957
+\end{quote}
+\cite{wikipedia-distributional-semantics} 
+\cite{firth-pic}
+Dans les applications réelles des word embeddings, le principe reste le même, mais le processus devient plus 
 compliqué. Les mots à l'entrée vont être beaucoup plus nombreux - on peut imaginer un ensemble 
 des centaines de milliers de mots. Ensuite, comment fait-on pour associer un vecteur à chacun
 de ces mots ? Dans l'exemple précédent, on a attribué des valeur arbitraires à chaque mot 
@@ -724,6 +867,12 @@ spécifié.
     \caption{Contextes d'une phrase.} 
     \label{tab:sémantique-distr-exemple} 
 \end{table}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.3\textwidth]{firth.png}
+  \label{fig:firth}
+\end{figure}
 
 On observe que les vecteurs des mots \textit{best} et \textit{worst} sont les mêmes :
 $[0,0,0,1,0,0,0,0,0,0]$. La distance euclidienne entre les deux est zéro, et par la 
@@ -914,6 +1063,12 @@ cachée correspondra aux vecteurs de nos mots à la fin de l'entraînement. La c
 représente la prédiction du modèle : le mot qui a comme contexte ce qui est à l'entrée. 
 
 \subsection{Exemple concret}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\textwidth]{cbow.png}
+  \caption{CBOW}
+  \label{fig:cbow}
+\end{figure}
 Passons sur un exemple concret traîté et expliqué dans la vidéo 
 \cite[\textit{Word2Vec - Skipgram and CBOW}, The Semicolon]{word2vec-semicolon}. 
 Ici, notre corpus n'est que la phrase "Hope can set you free". On cherche à obtenir un word 
@@ -941,14 +1096,6 @@ une autre itération.
 changer
 Voici comment on récupère les vecteurs de nos mots a la fin de l'entraînement : la i-ème colonne de la 
 matrice W correspondra au embedding (vecteur) du i-ème mot de notre contexte. 
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.6\textwidth]{cbow.png}
-  \caption{CBOW}
-  \label{fig:cbow}
-\end{figure}
-
 
 \subsection{Alors pourquoi ça marche ?}
 Le fait qu'un modèle si simple fonctionne si bien me paraisait magique au début. Si c'est le 
