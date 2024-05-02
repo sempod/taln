@@ -30,5 +30,21 @@ une histoire, car y'a trop de possibilité d'histoires. Probabilités conditionn
 toujours trop de trucs à calculer. Markov assumption. On peut prédire un truc en regardant pas trop loin 
 dans le passé. 
 
+Exemple de bigram peut-être, mentionner qu'on utilise des log probabilités. 
+Dire que les probabilités nous apprennent des informations purement grammaticales, mais aussi 
+des relations sur le monde réel. Chinese food vs English food. 
+
+Extrinsic evaluation : évaluation d'un modèle dans la vraie vie. 
+Intrinsic evaluation : une métrique permettant d'évaluer le modèle sans le lancer dans la vraie vie. 
+
+Training set, development set, test set.
+
+An (intrinsic) improvement in perplexity does not guarantee an (extrinsic) im-
+provement in the performance of a language processing task like speech recognition
+or machine translation. Nonetheless, because perplexity usually correlates with task
+improvements, it is commonly used as a convenient evaluation metric. Still, when
+possible a model’s improvement in perplexity should be confirmed by an end-to-end
+evaluation on a real task.
+
 
 

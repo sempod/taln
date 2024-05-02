@@ -7,10 +7,10 @@
 \contentsline {subsubsection}{Introduction}{5}{}%
 \contentsline {subsubsection}{Fonctionnement général}{6}{}%
 \contentsline {subsubsection}{Les transformations}{6}{}%
-\contentsline {subsubsection}{Décomposition et réassamblage}{7}{}%
+\contentsline {subsubsection}{Décomposition et réassemblage}{7}{}%
 \contentsline {subsubsection}{Substitution}{8}{}%
-\contentsline {subsubsection}{Classement des mots clés}{9}{}%
-\contentsline {subsubsection}{Dernière réassamblage utilisé}{9}{}%
+\contentsline {subsubsection}{Classement des mots-clés}{9}{}%
+\contentsline {subsubsection}{Dernière réassemblage utilisé}{9}{}%
 \contentsline {subsubsection}{Mémoire}{9}{}%
 \contentsline {subsubsection}{Discussion}{10}{}%
 \contentsline {subsection}{\numberline {2.1.3}ALPAC report}{11}{}%

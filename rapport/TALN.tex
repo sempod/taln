@@ -52,9 +52,7 @@
 
 \begin{abstract}
   Ces notes présentent un regard épistémologique sur le domaine du traitement automatique du 
-  langage naturel. Elles parlent de son histoire et de son développement, passant ensuite 
-  sur l'état actuel du domaine, où on regarde de plus près 
-  des techniques de l'apprentissage automatique et du deep learning.
+  langage naturel. Elles parlent de son histoire et de son développement.
 \end{abstract}
 
 
@@ -63,22 +61,13 @@
   naturel (TALN en abrégé), en passant par ses 
   trois approches principales : symbolique, statistique et neuronale. 
   Il est impossible pour moi de donner un résumé complet de l'histoire de ce domaine, 
-  ainsi que de décrire chaque approche parfaitement. J'ai donc pris la décision de surtout 
-  utiliser des exemples de programmes et d'expériences spécifiques pour montrer 
-  comment le domaine a évolué. 
-
-  Les insuffisances des deux premières approches nous emmèneront vers le TALN neuronal, 
-  c'est-à-dire des techniques utilisant l'apprentissage automatique (ML en abrégé pour "machine learning") ou 
-  le deep learning (DL en abrégé).  
+  ainsi que de décrire chaque approche parfaitement. J'ai donc pris la décision 
+  d'utiliser des exemples de programmes, d'expériences et de modèles spécifiques 
+  pour illustrer le développement du TALN. 
   
-  Ici on passera sur un autre exemple concret : Word2Vec, qui est une technique de ML légère et 
-  puissante en même temps, permettant de transformer des mots en vecteurs. 
-  On expliquera son fonctionnement et on regardera ses applications, surtout dans l'analyse
-  sémantique.
-
-  Par la suite, on verra et essayera d'expliquer (au moins légèrement) les techniques actuelles - celles utilisant le deep learning.  
-  
-  A la fin, on discutera des problèmes actuels du TALN et son possible développement futur.  
+  Dans le deuxième chapitre, on se concentra sur le word embedding : la représentation 
+  des mots par des vecteurs. On expliquera les motivations de cette technique, son fonctionnement ses les 
+  applications. 
 \chapter{Brève histoire du TALN}
   \section{Approche symbolique}
     \subsection{l'expérience Georgetown-IBM}
@@ -94,11 +83,11 @@ Le programme contenait 6 règles de grammaire, un vocabulaire de 250 éléments 
 (thèmes et désinences des mots compris), et était capable de traduire 60 
 phrases. Les phrases parlaient surtout de la chimie, les mathématiques, la 
 communication, la métallurgie et les affaires militaires. Il est essentiel de 
-noter que les phrases ont été choisies soigneusement par les auteur du programme. 
+noter que les phrases ont été choisies soigneusement par les auteurs du programme. 
 Certaines règles et opérations du programme était spécifiques à un nombre limité 
 de mots et de phrases d'entrée. Chaque mot russe du vocabulaire correspondait à un ou deux 
 équivalents anglais. En plus, chaque mot avait 3 codes numériques associés, qui 
-déterminait la règle de grammaire à utiliser pour produire la sortie. 
+déterminaient la règle de grammaire à utiliser pour produire la sortie. 
 Si cette description nous rappelle la notion de 
 "hardcoding", ce n'est pas par hasard. Le programme était essentiellement un 
 dictionnaire assez limité, qui cherchait la traduction correspondante pour chaque 
@@ -160,7 +149,7 @@ premier code étant vide (***) infère la règle 6 : la traduction est simplemen
 Le deuxième mot (ugla) est séparé en thème (ugl-) et désinence (-a). 
 Le thème (ugl-) appelle la règle 2 avec son code 1 (121). La règle 2 va chercher à trouver 221 ou 222 
 comme le code 1 de la prochaine entrée (-a). On trouve 222 pour le code 1 de l'entrée 
-"-a", et donc on choisi le deuxième équivalent de "ugl-" pour la sortie (angle). \newline 
+"-a", et donc on choisit le deuxième équivalent de "ugl-" pour la sortie (angle). \newline 
 \textit{sortie partielle : magnitude angle}
 
 L'entrée suivante (-a) appelle la règle 3 avec son code 1 (131). Cette règle va regarder si le 
@@ -178,7 +167,7 @@ code 2 de l'entrée précédente est égal à 23. Comme ce code est vide (***), 
 \begin{figure}[t]
   \centering
   \includegraphics[width=1\textwidth]{georgetown-chercheurs.png}
-  \caption{Hurd (directeur de la division des sciences appliquées de IBM), Dostert (traducteur franco-américain) et Watson (fondateur de IBM) lors de la démonstration.}
+  \caption{Hurd (directeur de la division des sciences appliquées de IBM), Dostert (traducteur franco-américain) et Watson (fondateur d'IBM) lors de la démonstration.}
   \label{fig:carte-perforee}
 \end{figure}
 
@@ -189,14 +178,14 @@ a été testé par des personnes avec aucune connaissance en russe, pour vérifi
 résultats corrects sur les phrases données. Si on essaie de trouver une analogie, on peut imaginer
 qu'on donne un dictionnaire russe-anglais à une personne anglophone qui ne parle pas russe, on lui demande 
 de traduire des phrases, mais en plus de ça, on lui donne aussi une liste d'instructions à suivre 
-pour produire des phrases plus naturelles (en n'uilisant que le dictionnaire pour traduire). 
+pour produire des phrases plus naturelles (en n'utilisant que le dictionnaire pour traduire). 
 
 En gros, la valeur de l'expérience Georgetown-IBM repose dans l'analyse de la grammaire russe et dans 
 l'invention des 6 règles qui permettent de traduire les phrases prédéterminées sans aucune réflexion. 
 Cette tâche a ensuite été passée à un ordinateur. 
 
 Ce qui est intéressant, c'est que cette expérience était vue comme un énorme succès. Voici quelques 
-extraits d'article des journaux américains contemporains pour illustrer ce point.
+extraits d'articles de journaux américains contemporains pour illustrer ce point.
 \begin{quote} 
 It is expected by IBM and Georgetown University, which collaborated on this project,
 that within a few years there will be a number of “brains” translating all languages
@@ -217,7 +206,7 @@ Christian Science Monitor)
 
 On remarque surtout l'utilisation du mot "brain", alors que le programme n'était qu'une suite 
 de branchements IF ELSE. Une jolie illustration du fait que dans les années 1950, les ordinateurs 
-étaient vus comme des cerveaux mystérieux par une partie significante de la population. 
+étaient vus comme des cerveaux mystérieux par une partie significative de la population. 
 Ceci a permis à cette démonstration d'arriver à son but : attirer l'attention du public et du 
 gouvernement américain et obtenir des financement pour 
 la recherche future dans ce domaine. 
@@ -233,11 +222,11 @@ En 1966, ELIZA est créé par Joseph Weizenbaum - un programme pour explorer l'i
 les machines. ELIZA est capable d'utiliser les règles définies dans un script externe pour 
 simuler une conversation. Le programme repose sur l'application du pattern-matching et d'une 
 méthodologie de substitution, qui seront expliqués sur un exemple.
-Son script le plus célèbre : DOCTOR, simule un psychothérapeute de l'école Rogerienne
+Son script le plus célèbre : DOCTOR, simule un psychothérapeute de l'école Rogérienne
 ("Rogerian school" en anglais). Ce qui est important à retenir est que dans cette approche 
 psychothérapeutique, le psychologue répète souvent les paroles du patient à ce dernier. 
 Ce script permet donc à ELIZA de garder l'illusion d'une conversation avec un humain, 
-sans savoir rien sur le monde réel. Citons Weizenbaum qui explique ce point:
+sans rien savoir du monde réel. Citons Weizenbaum qui explique ce point:
 
 \begin{quote}
   This mode of conversation was chosen because the psychiatric interview is one of the 
@@ -249,26 +238,28 @@ sans savoir rien sur le monde réel. Citons Weizenbaum qui explique ce point:
   in so directing the subsequent conversation. It is important to note that this 
   assumption is one made by the speaker. \cite[L'article original de Joseph Weizenbaum
   sur ELIZA]{eliza-original}
-\end{quote} 
+\end{quote}
 
       \subsubsection{Fonctionnement général}
 Le fonctionnement général d'ELIZA peut être décrit ainsi : le texte entré par l'utilisateur 
-est inspecté pour y trouver l'un des "mots clés". Si un mot clé est trouvé, l'entrée est transformée 
-en appliquant une règle associée avec ce mot clé. Si aucun mot clé n'est trouvé, une réponse générale 
-ne dépendant que de l'entrée est formulée, ou bien une transformation déjà utilisée avant est appliquée. 
-Les mots clé et leurs transformations sont définis dans le script externe. ELIZA peut donc travailler 
+est inspecté pour y trouver l'un des "mots-clés. Si un mot-clé est trouvé, l'entrée est transformée 
+en appliquant une règle associée avec ce mot-clé. Si aucun mot-clé n'est trouvé, une réponse générale 
+ne dépendant que de l'entrée est formulée, ou bien une transformation déjà utilisée 
+avant est appliquée. 
+Les mots-clés et leurs transformations sont définis dans le script externe. 
+ELIZA peut donc travailler 
 avec n'importe quel script, et c'est ce dernier qui détermine sa "personnalité". 
 
 Weizenbaum résume ceci en 5 problèmes techniques :
 \begin{itemize}
-  \item L'identification du mot clé le plus important, car il peut y en avoir plusieurs dans une 
+  \item L'identification du mot-clé le plus important, car il peut y en avoir plusieurs dans une 
   seule entrée.
-  \item L'identification d'un contexte minimal dans lequel le mot clé apparaît. Par exemple, si le 
-  mot clé est "you", est-ce qu'il est suivi par "are" ? Dans ce cas, une assertion sur ELIZA est 
+  \item L'identification d'un contexte minimal dans lequel le mot-clé apparaît. Par exemple, si le 
+  mot-clé est "you", est-ce qu'il est suivi par "are" ? Dans ce cas, une assertion sur ELIZA est 
   probablement faite par l'utilisateur. Une telle information peut nous aider avec le choix de transformation.
   \item Le choix d'une transformation appropriée et l'exécution de cette transformation. 
-  \item Un mécanisme qui permettra à ELIZA de répondre d'une façon "intelligente" si aucun mot 
-  clé est trouvé. 
+  \item Un mécanisme qui permettra à ELIZA de répondre d'une façon "intelligente" si 
+  aucun mot-clé est trouvé. 
   \item Un mécanisme pour faciliter l'édition et extension d'un script. Ce point nous intéressera peu, 
   car il n'est pas essentiel pour comprendre le fonctionnement d'ELIZA. 
 \end{itemize}
@@ -278,7 +269,7 @@ Le principe des transformation est expliqué très bien par Weizenbaum dans son 
 en est une analogie) : 
 considérons la phrase "Je suis très malheureux". Supposons qu'un étranger (pourquoi pas un Slovaque) avec un niveau de 
 français limité a entendu cette phrase mais n'a compris que le début de la phrase : "Je suis". 
-Le Slovaque a quand-même retenu le reste de la phrase, mais il ne sait pas ce qu'il veut dire. 
+Le Slovaque a quand même retenu le reste de la phrase, mais il ne sait pas ce qu'il veut dire. 
 Souhaitant répondre à la personne, il remplace "Je suis" par "Ca fait longtemps que tu es"
 et ensuite il répète le reste de la phrase originale pour formuler sa réponse :
 "Ca fait longtemps que tu es malheureux ?". Le Slovaque a appliqué un certain modèle
@@ -288,7 +279,7 @@ la phrase entière. Cette transformation lui dit qu'à toute phrase de la forme
 "Je suis BLABLA", il est possible de répondre avec "Ca fait longtemps que tu es BLABLA ?", 
 sans savoir ce que le BLABLA veut dire. Voilà ce que fait ELIZA.  
 
-      \subsubsection{Décomposition et réassamblage}
+      \subsubsection{Décomposition et réassemblage}
 Plus formellement, considérons la phrase "It seems that you hate me". On l'a décompose ainsi
 en quatre parties :
 
@@ -297,19 +288,19 @@ en quatre parties :
   \end{center} 
   
   Supposons que l'étranger ne comprend que les parties 2 et 4 de cette phrase. Les mots qu'il a compris 
-  représente le/-s mot/-s clé pour ELIZA. Ici, il s'agit des mots "you" et "me". Une façon générale 
+  représente le/-s-mot/-s clé pour ELIZA. Ici, il s'agit des mots "you" et "me". Une façon générale 
   pour lui de répondre pourrait être "What makes you think I hate you?". C'est-à-dire il jette la partie (1), 
   il traduit les parties qu'il a compris - "you" devient "I" et "me" devient "you" et finalement il 
   ajoute une phrase de base "What makes you think" devant tout ça. 
 
-  On peut alors représenter la régle de décomposition que l'étranger a utilisé plus formellement :
+  On peut alors représenter la règle de décomposition que l'étranger a utilisée plus formellement :
 
   \begin{center}
     (0 YOU 0 ME)
   \end{center} 
 
   où le 0 correspond à un nombre quelconque de mots dans la phrase originale. 
-  Voici la règle de réassamblage correspondante.
+  Voici la règle de réassemblage correspondante.
 
   \begin{center}
     (WHAT MAKES YOU THINK I 3 YOU)
@@ -320,9 +311,9 @@ en quatre parties :
    
   Si on prend la phrase "It seems that you hate", la règle de décomposition 
   (0 YOU 0 ME) échoue, comme on n'arrive pas à trouver le mot "ME". On voit donc le 
-  besoin d'avoir plusieurs décompositions pour un seul mot clé, qui vont être testées 
-  une par une sur la phrase d'entrée. En plus, on aura plusieurs réassamblages possibles pour 
-  chaque décomposition. On peut alors représenter les données correspondantes à un mot clé 
+  besoin d'avoir plusieurs décompositions pour un seul mot-clé, qui vont être testées 
+  une par une sur la phrase d'entrée. En plus, on aura plusieurs réassemblages possibles pour 
+  chaque décomposition. On peut alors représenter les données correspondantes à un mot-clé 
   ainsi : 
 
   \begin{align*}
@@ -333,45 +324,45 @@ en quatre parties :
     &\left. \left[ D_{n}, R_{n, 1}, R_{n, 2} \ldots R_{n, m_{n}} \right] \right\}
   \end{align*}
 
-  où à un mot clé $K$, on associe $n$ règles de décomposition $D_{1} \ldots D_{n}$, et à 
-  chaque règle de décomposition $D_{i}$ on associe $m_{i}$ règles de réassamblage 
+  où à un mot-clé $K$, on associe $n$ règles de décomposition $D_{1} \ldots D_{n}$, et à 
+  chaque règle de décomposition $D_{i}$ on associe $m_{i}$ règles de réassemblage 
   $R_{1} \ldots R_{m_{i}}$. Un script pour ELIZA 
   n'est alors qu'une liste de telles structures. Un dictionnaire qui a comme clés 
-  les mots clés du script est construit une fois que le script est chargé par ELIZA. 
+  les mots-clés du script est construit une fois que le script est chargé par ELIZA. 
   En plus, les clés du dictionnaire sont hachées pour permettre à ELIZA de déterminer 
-  rapidement si un mot lu est un mot clé ou pas, car la plupart des mots que ELIZA va lire 
+  rapidement si un mot lu est un mot-clé ou pas, car la plupart des mots que ELIZA va lire 
   ne sont pas des mot clés. Regardons 
   d'autres mécanismes qui sont présents dans ELIZA.
 
   \begin{figure}[t]
     \centering
     \includegraphics[width=1\textwidth]{eliza-keyword-detection.png}
-    \caption{Flowchart de la détection des mots clés (de l'article original sur ELIZA).}
+    \caption{Flowchart de la détection des mots-clés (de l'article original sur ELIZA).}
     \label{fig:eliza-flowchart}
   \end{figure}
 
   \subsubsection{Substitution}
   On remarque aussi que dans l'exemple au-dessus, on a substitué le mot "you" à l'entrée par "I"
-  à la sortie. De telles substitutions sont aussi définies dans la liste d'un mot clé donné.  
+  à la sortie. De telles substitutions sont aussi définies dans la liste d'un mot-clé donné.  
   \todo[inline]{exemple.}
   
-  \subsubsection{Classement des mots clés}
+  \subsubsection{Classement des mots-clés}
   ELIZA contient aussi un mécanisme pour classer les mots clé par importance. D'où le besoin 
   pour ceci ? \todo[inline]{exemple.} Pendant le scan de la phrase à l'entrée, 
   ELIZA utilise une autre liste pour tenir compte des mots clé rencontrés, et pour les garder 
   ordonnés par leur importance.
   
-  \subsubsection{Dernière réassamblage utilisé}
-  Lorsqu'une règle de réassamblage correspondante à une décomposition 
+  \subsubsection{Dernière réassemblage utilisé}
+  Lorsqu'une règle de réassemblage correspondante à une décomposition 
   est utilisée, son indice est sauvegardé. 
   Lors de la prochaine utilisation de cette décomposition, cet indice 
-  va permettre à ELIZA d'utiliser la règle de réassamblage qui suit la dernière utilisée. 
-  Elle va utiliser chaque réassamblage avant de revenir sur un qu'on a déjà vu. 
+  va permettre à ELIZA d'utiliser la règle de réassemblage qui suit la dernière utilisée. 
+  Elle va utiliser chaque réassemblage avant de revenir sur un qu'on a déjà vu. 
   Ceci rend les réponses de ELIZA plus riches.
   
   \subsubsection{Mémoire}
   Un mécanisme très simple, mais qui pourtant produit des résultats impressionnants est celui 
-  de la mémoire. Il permet à ELIZA de répondre à l'utilisateur même si aucun mot clé n'est trouvé 
+  de la mémoire. Il permet à ELIZA de répondre à l'utilisateur même si aucun mot-clé n'est trouvé 
   dans l'entrée. La réponse va donc faire référence à quelque chose que l'utilisateur a dit 
   précédemment. Considérons la structure suivante : 
 
@@ -382,13 +373,13 @@ en quatre parties :
     ...)
   \end{center}
 
-  Le mot clé "MY" va alors servir à insérer des phrases dans la mémoire. Lorsque ce mot clé 
+  Le mot-clé "MY" va alors servir à insérer des phrases dans la mémoire. Lorsque ce mot-clé 
   est choisi comme le plus important par le mécanisme de classement à la fin de la lecture 
   de l'entrée, l'une des transformations de la structure de mémoire est choisie aléatoirement. 
   Une copie de l'entrée est alors transformée est sauvegardée dans une pile. Le reste du processus 
-  continue comme on l'a déjà décrit. Si jamais une entrée future n'admet aucun mot clé, une réponse 
+  continue comme on l'a déjà décrit. Si jamais une entrée future n'admet aucun mot-clé, une réponse 
   est dépilée de la pile de mémoire et elle est envoyée à l'utilisateur. Ce mécanisme ajoute 
-  beaucoup à l'effet que ELIZA pouvait produire sur ces utilisateur. 
+  beaucoup à l'effet que ELIZA pouvait produire sur ses utilisateurs. 
 
   \begin{figure}[h]
     \centering
@@ -400,7 +391,7 @@ en quatre parties :
       \subsubsection{Discussion}
 Dans son livre \textit{Computer Power and Human Reason: From Judgement to Calculation}, 
 Weizenbaum nous raconte des anecdotes parlant des premiers utilisateurs de ELIZA, 
-qui devenait parfois attachés émotionnellement au programme. Ou l'exemple de sa 
+qui devenaient parfois attachés émotionnellement au programme. Ou l'exemple de sa 
 secrétaire, qui a apparemment demandé à Weizenbaum de sortir de la pièce pour qu'elle 
 puisse avoir une vraie conversation avec ELIZA.  
 
@@ -490,7 +481,7 @@ détail que j'ai atteint dans les deux cas est à peu près le même. }
 
   Premièrement, les théories linguistiques dites \textit{Chomskyennes} perdaient en popularité
   (après le linguiste américain Noam Chomsky). Ces théories couvrent évidemment un grand nombre 
-  de sujets linguistique. Pour simplifier énormément, on peut dire que ces théories 
+  de sujets linguistiques différents. Pour simplifier énormément, on peut dire que ces théories 
   présentent d'une façon ou d'une autre le point de vue, que tout langage peut être décrit par 
   un ensemble de règles. Ce n'est pas par hasard si ça nous rappelle l'approche symbolique. 
   Par exemple, dans son livre \textit{Syntactic Structures} de 1957, Noam Chomsky argumente 
@@ -515,7 +506,7 @@ détail que j'ai atteint dans les deux cas est à peu près le même. }
   une question plus mathématique. Par exemple : étant donné le début d'une phrase, quelle est la \textbf{probabilité}
   qu'un mot spécifique suivra ? Les modèles qui répondent à cette question s'appellent des 
   \textit{modèles de langage} (\textit{language models} en anglais). Même si ce nom semble 
-  très général, il n'est donné qu'aux modèles qui cherchent la probablité qu'un mot spécifique 
+  très général, il n'est donné qu'aux modèles qui cherchent la probabilité qu'un mot spécifique 
   suivra, et les n-grammes en font partie. Les modèles actuels comme GPT sont des \textit{large language models}. Eux aussi essaient 
   de deviner le mot qui suivra, mais à grâce à leurs proportions énormes, on ajoute le mot 
   \textit{large} pour les nommer. On peut aussi attribuer une probabilité à une phrase 
@@ -527,7 +518,7 @@ détail que j'ai atteint dans les deux cas est à peu près le même. }
   \end{align*}
   
   \subsubsection{Cas d'usage}
-  Cette probablité nous permet de choisir la meilleure option : plus probable $\approx$ plus 
+  Ces probabilités nous permettent de choisir la meilleure option : plus probable $\approx$ plus 
   correcte. Ceci est utilisé fortement dans l'autocomplétion et dans l'autocorrection. 
 
   Le cas d'usage pour l'autocomplétion est évident. Une fois qu'on a frappé \textit{Je pense}, 
@@ -538,8 +529,8 @@ détail que j'ai atteint dans les deux cas est à peu près le même. }
   
   Avec un modèle 
   de langage, on peut se rendre compte que la probabilité que les mots \textit{à chaque foi\underline{d}}
-  apparaîssent dans un texte est quasiment 0, même si la probabilité que les mots \textit{à chaque} 
-  apparaîssent ensemble est assez grande. Le problème se trouve alors dans les deux derniers mots. 
+  apparaissent dans un texte est quasiment 0, même si la probabilité que les mots \textit{à chaque} 
+  apparaissent ensemble est assez grande. Le problème se trouve alors dans les deux derniers mots. 
   Le modèle peut nous dire que la probabilité des mots \textit{chaque fois} est beaucoup plus grande 
   que celle de \textit{chaque foi\underline{d}}, et on corrige ainsi une erreur de frappe. 
 
@@ -563,7 +554,7 @@ détail que j'ai atteint dans les deux cas est à peu près le même. }
   Ceci nous dirait qu'il y ait très probablement un truc qui ne va pas dans cette phrase. 
   On peut alors avertir l'auteur et corriger une faute qu'on n'aurait pas vu sinon. 
 
-  On peut aussi corriger des erreurs grammaticale. La probabilité que le mot 
+  On peut aussi corriger des erreurs grammaticales. La probabilité que le mot 
   \textit{passé} suive les mots \textit{j'ai} et beaucoup plus grande que 
   pour le mot \textit{passer}, ce qui nous permet de corriger une erreur de conjugaison. 
   
@@ -582,11 +573,11 @@ détail que j'ai atteint dans les deux cas est à peu près le même. }
   Finalement, les modèles de langage sont utiles dans la CAA (communication améliorée et 
   alternative). Les personnes qui ne sont pas capables de parler ni d'utiliser la langue des 
   signes utilisent parfois leur vue ou d'autres mouvement spécifiques pour choisir des mots 
-  d'une séléction. Un modèles de langage peut alors fournir des meilleures prédictions et 
-  faciliter le communication. 
+  d'une sélection. Un modèles de langage peut alors fournir des meilleures prédictions et 
+  faciliter la communication. 
 
   \subsubsection{Principe}
-  Voici la façon naive de faire. On essaie de trouver $P(w|h)$ : la probabilité que le mot 
+  Voici la façon naïve de faire. On essaie de trouver $P(w|h)$ : la probabilité que le mot 
   $w$ suive l'historique $h$ (le début d'une phrase par exemple). Prenons $w = \textup{que}$ et 
   $h = \textup{c'est sûr}$. On pourrait calculer cette probabilité ainsi : 
   \begin{align}
@@ -601,7 +592,7 @@ détail que j'ai atteint dans les deux cas est à peu près le même. }
   dans le corpus, car elle y serait pas, même si elle serait tout à fait plausible et 
   correcte. 
 
-  Voilà où rentre en scène les n-grammes. Par exemple avec un \textit{bigramme}, 
+  Voilà où entrent en scène les n-grammes. Par exemple avec un \textit{bigramme}, 
   au lieu de trouver la probabilité en comptant les occurrences de 
   "c'est sûr" et de "c'est sûr que", on va l'approximer en calculant la probabilité que "que" suive 
   le dernier mot de l'historique : "sûr". Pour un \textit{trigramme}, ça serait 
@@ -639,10 +630,10 @@ détail que j'ai atteint dans les deux cas est à peu près le même. }
   conditionnelle des mots qui se trouvent au début ou à la fin d'une phrase, en traitant 
   ces symboles comme des mots du corpus. 
 
-  Une telle matrice va contenir beaucoup de case de valeur 0. Celles-ci correspondent à 
-  des binomes de mots qui ne se trouvent pas dans notre corpus. Pourtant, un tel binome 
+  Une telle matrice va contenir beaucoup de cases de valeur 0. Celles-ci correspondent à 
+  des binômes de mots qui ne se trouvent pas dans notre corpus. Pourtant, un tel binôme 
   peut très bien apparaître dans la "vraie vie", et notre modèle lui associerait une 
-  probabilité 0, ce qui n'est évidemment pas correcte. Pour rémedier à ceci, il existe 
+  probabilité 0, ce qui n'est évidemment pas correct. Pour remédier à ceci, il existe 
   plusieurs techniques de \textit{lissage}, qui redistribuent les probabilités du modèle, 
   à ce que les cases qui avaient initialement une probabilité 0 aient une probabilité
   positive. 
@@ -670,11 +661,11 @@ détail que j'ai atteint dans les deux cas est à peu près le même. }
     \label{fig:pierce}
   \end{figure}
 
-  Il est essentiel de bien choisir les jeux d'entrainement, de validation et de test. 
-  Le jeux d'entrainement représente le corpus de texte sur lequel on calcule les 
-  probabilités. Le jeux de validation sert à tester le modèle pendant son développement. 
-  Le jeux de test sert à évaluer le modèle final. Il est important que les jeux 
-  d'entrainement et de test soient disjoints, pour pas produire des résultats biaisés. 
+  Il est essentiel de bien choisir les jeux d'entraînement, de validation et de test. 
+  Le jeu d'entraînement représente le corpus de texte sur lequel on calcule les 
+  probabilités. Le jeu de validation sert à tester le modèle pendant son développement. 
+  Le jeu de test sert à évaluer le modèle final. Il est important que les jeux 
+  d'entraînement et de test soient disjoints, pour ne pas produire des résultats biaisés. 
 
 \chapter{Word embedding}
   \section{Introduction}
@@ -682,7 +673,7 @@ détail que j'ai atteint dans les deux cas est à peu près le même. }
 est la notion de représenter un mot par un vecteur (réel), en sorte que ça code leur sémantique.
 L'idée principale étant que dès qu'on a des vecteurs, on peut faire des maths dessus. Et si ce 
 codage de nos mots est bien fait, on s'attend à ce que les opérations mathématiques qu'on peut 
-faire sur les vecteurs correspondent à des rélations sémantiques entre nos mots. 
+faire sur les vecteurs correspondent à des relations sémantiques entre nos mots. 
 
 Par exemple, on pourrait se demander quel est le vecteur le plus proche du vecteur qui représente 
 le mot "chien". Si notre word embedding est bien fait, on s'attend à trouver dans sa proximité 
@@ -706,7 +697,7 @@ possibilités d'analyse sémantique de texte. On peut trouver les mots les plus 
 et on peut faire pareil pour les phrases (moteurs de recherche, autocorrection). Pour obtenir 
 le vecteur d'une phrase, il suffit de prendre la moyenne des vecteurs de ses mots.  
 On peut analyser de différents documents et obtenir un résumé de leur contenu, de l'opinion 
-ou de l'émotion qui se trouve dedans. On peut mésurer la similarité entre document, sémantiquement
+ou de l'émotion qui se trouve dedans. On peut mesurer la similarité entre documents, sémantiquement
 parlant. 
 
 Les word embedding sont également essentiels pour l'apprentissage automatique. 
@@ -742,30 +733,30 @@ Sur fig. \ref{fig:animaux-word-embedding-2d}, vous pouvez voir
 ce que ça donne en tant qu'espace de vecteurs 2D. 
 Cet exemple très simple est bien un word embedding : on a associé un vecteur 2d à chaque mot 
 de notre table. Certes, d'une façon arbitraire, mais pourtant intuitive, et on croit que les 
-valeurs qu'on a choisies codent bien les rélations sémantiques entre nos animaux. On peut désormais 
+valeurs qu'on a choisies codent bien les relations sémantiques entre nos animaux. On peut désormais 
 tester les opérations dont on a parlé dans la partie précédente, pour voir si notre word embedding 
 est bien fait. 
 \begin{figure}[!htb]
   \centering
   \includegraphics[width=0.6\textwidth]{animal-space-dif.png}
-  \caption{La tarantule au hamster.}
-  \label{fig:tarantule-hamster}
+  \caption{La tarentule au hamster.}
+  \label{fig:tarentule-hamster}
 \end{figure}
 
 Remarquons que le cheval et le dauphin sont proches l'un de l'autre. Deux animaux assez mignons et grands, 
 d'après notre embedding (même si les dauphins ne sont parfois pas si mignons que ça...). Similairement pour 
-le chaton et le chiot, deux animaux qui sont petits et très mignons, ou bien la tarantule et le moustique, 
-très petits et pas du tout mignons. Prenons maintenant la différence entre le chaton et le poussain et ajoutons-la 
-à la tarantule. Voyons ceci sur la fig. \ref{fig:tarantule-hamster}. 
+le chaton et le chiot, deux animaux qui sont petits et très mignons, ou bien la tarentule et le moustique, 
+très petits et pas du tout mignons. Prenons maintenant la différence entre le chaton et le poussin et ajoutons-la 
+à la tarentule. Voyons ceci sur la fig. \ref{fig:tarentule-hamster}. 
 
-La pointe du vecteur bleu est le plus près du vecteur qui représent le hamster.
+La pointe du vecteur bleu est le plus près du vecteur qui représente le hamster.
 Mathématiquement, cela s'écrirait :
 \begin{align*}
   \vec{c} - \vec{p} + \vec{t} \approx \vec{h} 
 \end{align*}
 Et en français : 
 \begin{center}
-  Les tarentules sont aux hamsters ce que les poussin sont aux chatons. 
+  Les tarentules sont aux hamsters ce que les poussins sont aux chatons. 
 \end{center}
 C'est-à-dire un animal un peu plus petit et beaucoup moins mignon, ce qui est assez 
 correcte. On suppose ici que les poussins sont moins mignons que les chatons... bon, 
@@ -774,8 +765,8 @@ il y a pas mal de gens qui seraient d'accord, on le laisse comme ça.
 On a vu un word embedding sur quelques mots d'animaux, qui nous a permis d'analyser leur sémantique.  
 On associe un vecteur à chaque mot en fonction de la mignonnerie et la 
 taille de l'animal, on regarde la relation mathématique entre deux mots
-(le poussin et le chaton), et on utilise cette information pour déduire une \textbf{rélation sémantique} 
-entre deux mots différents (la tarantule et le hamster). 
+(le poussin et le chaton), et on utilise cette information pour déduire une \textbf{relation sémantique} 
+entre deux mots différents (la tarentule et le hamster). 
 Incroyablement simple et puissant en même temps.
 
 
@@ -819,12 +810,12 @@ devraient avoir une sémantique similaire, car ils ont le même
 contexte. Ceci est tout à fait vrai, tous les trois mots sont utilisés pour décrire le temps. 
 Une telle sémantique s'appelle alors comme la hypothèse - distributionnelle. 
 
-Cette approche nous permettra d'assiocer des vecteurs aux mots d'une entrée de taille 
+Cette approche nous permettra d'associer des vecteurs aux mots d'une entrée de taille 
 arbitraire, et en plus automatiquement. Regardons sur un exemple provenant de \cite{understanding-word-vectors} :
 \begin{center}
   It was the best of times, it was the worst of times.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
 \end{center}
-Comme le contexte, on considérera juste le voisin gauche et le voisin droite de chaque mot. La 
+Comme le contexte, on considérera juste le voisin de gauche et le voisin de droite de chaque mot. La 
 première ligne de la table \ref{tab:sémantique-distr-exemple} contient tous les contextes possibles 
 Même si "it was the" a deux occurrences dans notre phrase, le contexte correspondant 
 "it \textunderscore \ the" ne se trouve qu'une fois dans la table. On prend les contextes sans répétition.
@@ -883,11 +874,11 @@ Cette façon d'obtenir un word embedding s'appelle \textit{count-based} : on com
 qu'un mot apparaît dans un contexte pour obtenir son vecteur.  
 
 Dans l'exemple précédent, notre corpus (l'entrée textuelle) consistait en une phrase, ce qui 
-nous a donné 10 contextes : 10 positions possible pour un mot.  
-En réalité, on est emmené à utiliser des corpus beaucoup plus grands, où on aurait donc des 
+nous a donné 10 contextes : 10 positions possibles pour un mot.  
+En réalité, on est amené à utiliser des corpus beaucoup plus grands, où on aurait donc des 
 milliers ou mêmes des millions de contextes possibles - des vecteurs à des milliers ou des 
 millions de dimensions. On se doute que ce ne serait pas très 
-pratique. Grâce à des techniques de réduction de dimensionalité, on peut transformer des vecteurs 
+pratique. Grâce à des techniques de réduction de dimensionnalité, on peut transformer des vecteurs 
 énormes en vecteurs de dimension plus raisonnable : environ 100-300, sans perdre trop 
 d'information. Je laisse les détails de cette 
 transformation de côté (c'est des maths).
@@ -898,7 +889,7 @@ peut télécharger et utiliser dans nos projets. Dans l'exemple suivant,
 on utilisera la collection \textit{en\_core\_web\_lg}, disponible dans la bibliothèque Python 
 \textit{SpaCy}. Il s'agit de 514 000 vecteurs de mots 
 anglais à 300 dimensions, provenant de plusieurs sources. 
-Ca fait beaucoup de vecteurs. 
+Ça fait beaucoup de vecteurs. 
 
 Cette démonstration est elle aussi fortement inspirée par
 \cite[\textit{Understanding word vectors}, Allison PARISH]{understanding-word-vectors} (tout ce que j'ai changé c'est le livre),
@@ -909,7 +900,7 @@ possible, sachant qu'on est à la fin du semestre :)
 Je vais utiliser l'un de mes livres préféré comme le corpus : 
 \textit{Joyland}, écrit par Stephen King. Pour vous mettre un peu dans l'ambiance, 
 \textit{Joyland} parle d'un jeune homme du nom Devin Jones. Devin a 21 ans, il fait 
-des études d'anglais, il rêve de devenir écrivant, mais sinon il ne sait pas 
+des études d'anglais, il rêve de devenir écrivain, mais sinon il ne sait pas 
 quoi faire de sa vie. Sa copine vient de le larguer, et donc au lieu de 
 passer les vacances d'été avec elle, il les passe à travailler dans un parc 
 d'attraction. Ici il trouve des amis et un boulot qui lui plaît. Un peu plus tard, 
@@ -922,8 +913,8 @@ Tout ça dans une vibe des années 70 en Caroline du Nord.
 On va charger le texte de \textit{Joyland} comme l'entrée, et on va utiliser les 
 vecteurs déjà disponibles dans \textit{SpaCy} pour analyser ce texte. On va utiliser que 
 des mots unique du livre, et en plus que des mots du livre qui ont un vecteur dans le 
-modèle. Les rélations sémantiques sont détérminées par le modèle déjà entraîné, mais 
-les résultats vont nous quand même donner des information sur notre entrée spécifique. 
+modèle. Les relations sémantiques sont déterminées par le modèle déjà entraîné, mais 
+les résultats vont quand même nous donner des informations sur notre entrée spécifique. 
 Cet exemple représente ce qui se passe lorsqu'on utilise un word embedding pour analyser 
 la sémantique d'un document, par exemple pour déterminer l'émotion principale d'un commentaire.
 Voici le code (les commentaires sont en anglais mais je crois que ça ira) \cite{gensim-tuto}: 
@@ -1015,7 +1006,7 @@ Toujours un bon dîner mais un peu plus carnivore.
 \section{Word2Vec}
 \subsection{Introduction}
 \cite{wikipedia-word2vec} \cite{wikipedia-word2vec-fr} Word2Vec est utilisé comme le nom commun de deux architectures de réseau neuronale, créés par 
-une équipe de chercheur à Google en 2013. Leurs deux modèles : CBOW et Skip-gram, étaient plus 
+une équipe de chercheurs à Google en 2013. Leurs deux modèles : CBOW et Skip-gram, étaient plus 
 rapide et plus précise que les autres modèles qui existaient à l'époque. Ils étaient capable 
 de produire un word embedding sur un corpus de 1.6 milliards de mots en moins d'un jour \cite{word2vec-original}.
 Ils ont marqué un énorme progrès dans le domaine. Par conséquence, les word embedding sont 
@@ -1027,8 +1018,8 @@ précédente.
 
 \subsection{Motivation et les langues flexionnelles}
 \cite{word2vec-original} Le but des chercheurs était de trouver un modèle qui serait capable de s'entraîner sur un corpus 
-d'un milliards de mot (en ordre de grandeur). Ils sont également capable de reconnaître 
-plusieurs degrées de similarités, ce qui est essentiel pour les langues flexionnelle. 
+d'un milliard de mots (en ordre de grandeur). Ils sont également capable de reconnaître 
+plusieurs degrés de similarités, ce qui est essentiel pour les langues flexionnelles. 
 Comme un exemple d'une telle langue, on peut utiliser le slovaque, dans lequel les noms 
 changent de forme en fonction de contexte d'usage et de leur rapport grammatical aux autres 
 mots dans une phrase. Voici une comparaison avec le français.
@@ -1048,7 +1039,7 @@ de similarité}, car la similarité entre les formes est plutôt grammaticale qu
 sémantique (on parle toujours d'une \textit{chaise}). Ceci nous permet de générer du texte 
 plus précis dans les langues flexionnelles, car avec Word2Vec on peut trouver le mot le plus 
 similaire sémantiquement, et ensuite regarder dans son voisinage pour trouver la forme 
-grammaticalement correcte. L'équipe derière Word2Vec était dirigé par Tomáš Mikolov, 
+grammaticalement correcte. L'équipe derrière Word2Vec était dirigé par Tomáš Mikolov, 
 chercheur en IA tchéque, qui a travaillé sur le traitement automatique du tchéque avant ça
 (qui est une langue flexionnelle aussi), on peut donc voir l'inspiration. 
 
@@ -1056,7 +1047,7 @@ chercheur en IA tchéque, qui a travaillé sur le traitement automatique du tch�
 On va regarder le modèle CBOW de plus près. CBOW veut dire "continuous bag of words", ou 
 \textit{sac de mots continu} en français. Il s'agit d'un réseau de neurones très compact, 
 ne contenant que deux couches hormis l'entrée. L'entrée représente le contexte du mot que 
-le CBOW cherche à deviner. La couche cachées représente le embedding lui-même. Elle est constituée
+le CBOW cherche à deviner. La couche cachée représente l'embedding lui-même. Elle est constituée
 de quelques centaines de neurones (ce nombre correspond à la dimension des vecteurs qu'on veut 
 obtenir). La couche 
 cachée correspondra aux vecteurs de nos mots à la fin de l'entraînement. La couche de sortie 
@@ -1070,7 +1061,7 @@ représente la prédiction du modèle : le mot qui a comme contexte ce qui est �
   \label{fig:cbow}
 \end{figure}
 Passons sur un exemple concret traîté et expliqué dans la vidéo 
-\cite[\textit{Word2Vec - Skipgram and CBOW}, The Semicolon]{word2vec-semicolon}. 
+\cite[\textit{Word2Vec - Skip-gram and CBOW}, The Semicolon]{word2vec-semicolon}. 
 Ici, notre corpus n'est que la phrase "Hope can set you free". On cherche à obtenir un word 
 embedding de vecteurs à 3 dimensions, la couche cachée contient alors 3 neurones.
 
@@ -1083,53 +1074,53 @@ On peut voir ceci sur l'image, même si dans l'image on ne voit que deux vecteur
 on imagine qu'il y en a pour chaque mot du corpus. 
 
 Pour la première itération, on prend le premier contexte de notre corpus. Dans cet exemple, 
-on considère des contextes de taille 3, c'est-à-dire le voisin gauche, le voisin droite et le mot lui-même.
+on considère des contextes de taille 3, c'est-à-dire le voisin de gauche, le voisin de droite et le mot lui-même.
 Notre contexte (notre entrée) est donc \textit{hope \_ set}, et on cherche à deviner le mot \textit{can}.
 On multiplie les vecteurs d'entrée par une matrice W de dimension 3x5, pour passer à la couche cachée. 
 On multiplie ensuite le vecteur de cette couche par une autre matrice W' de dimension 5x3 pour obtenir 
-un vecteur de dimension 5 à la sortie. On compare ce vecteur au vecteur du mot qu'on chercher à deviner. 
+un vecteur de dimension 5 à la sortie. On compare ce vecteur au vecteur du mot qu'on cherche à deviner. 
 Dans cet itération, c'est le mot \textit{can}, et donc son vecteur contient la valeur 1 dans sa deuxième 
-case, car \textit{can} est le deuxième mot du notre corpus. Le résultat est donc comparé avec le vecteur 
+case, car \textit{can} est le deuxième mot de notre corpus. Le résultat est donc comparé avec le vecteur 
 du mot qu'on cherchait. On utilise ensuite des mathématiques des réseaux de neurones pour ajuster les 
 valeurs dans les cases des matrices W et W'. On déplace le contexte à droite par un mot, et on recommence 
 une autre itération. 
 changer
-Voici comment on récupère les vecteurs de nos mots a la fin de l'entraînement : la i-ème colonne de la 
+Voici comment on récupère les vecteurs de nos mots à la fin de l'entraînement : la i-ème colonne de la 
 matrice W correspondra au embedding (vecteur) du i-ème mot de notre contexte. 
 
 \subsection{Alors pourquoi ça marche ?}
-Le fait qu'un modèle si simple fonctionne si bien me paraisait magique au début. Si c'est le 
+Le fait qu'un modèle si simple fonctionne si bien me paraissait magique au début. Si c'est le 
 cas pour vous aussi, considérez la description suivante. 
 
-A l'entrée, on a le contexte d'un mot donné. Par la hypothèse distributionnelle, ceci code 
+A l'entrée, on a le contexte d'un mot donné. Par l'hypothèse distributionnelle, ceci code 
 sa signification. On "comprime" cette information avec la matrice W pour passer à la couche 
-cachée. On choisi la taille de la couche cachée pour correspondre à la dimensions des vecteurs 
+cachée. On choisit la taille de la couche cachée pour correspondre à la dimensions des vecteurs 
 qu'on veut obtenir. Ensuite, on "décomprime" cette information avec la matrice W' 
 pour passer à la couche de sortie. 
 
 Ce qui est essentiel, c'est qu'on ajoute une demande  
 à cette "algo de compression", la demande étant qu'on veut que la couche de sortie 
 correspond au mot donné au début (celui au milieu du contexte). La compression et la 
-décompression sont donc obligées de garder la rélation entre le contexte et le mot dans son 
-milieu. Et comme cette rélation représente la sémantique du mot, c'est la sémantique qui sera 
+décompression sont donc obligées de garder la relation entre le contexte et le mot dans son 
+milieu. Et comme cette relation représente la sémantique du mot, c'est la sémantique qui sera 
 encodée dans ce processus. 
 
 A la fin, on prend simplement "l'algo de compression" qu'on a utilisé, c'est-à-dire la matrice 
 W comme notre word embedding. Cette "compression" est dans le format correcte (format qui 
-correspond aux vecteurs qu'on veut), et elle encode la rélation entre un mot et son contexte, 
-ce qui est la sémantique (par la hypothèse). Ce sont les qualités qu'on cherche dans un word 
+correspond aux vecteurs qu'on veut), et elle encode la relation entre un mot et son contexte, 
+ce qui est la sémantique (par l'hypothèse). Ce sont les qualités qu'on cherche dans un word 
 embedding. 
 
 Je me rends compte que cette description reste vague, mais je la trouve pas mal pour donner une
-certaine explication ou "philosphie" intuitive à ce modèle. La raison précise pour la capacité de ces 
+certaine explication ou "philosophie" intuitive à ce modèle. La raison précise pour la capacité de ces 
 modèles à produire des word embeddings aussi bons n'est toujours pas connu, 
 même s'il y a des articles qui essaie de s'y approcher. 
 
 \subsection{Discussion}
-\cite{wikipedia-wembedding} Le modèle Skipgram est symétrique au CBOW. La seule différence étant qu'on prend un mot comme l'entrée, 
+\cite{wikipedia-wembedding} Le modèle Skip-gram est symétrique au CBOW. La seule différence étant qu'on prend un mot comme l'entrée, 
 et on essaie de deviner son contexte dans le corpus. En général, le CBOW est plus rapide, et le 
-Skipgram a des meilleurs résultats sur des mots rares. Ces modèles 
-seuls sont devenus dépassé, mais ils sertvent toujours comme un prétraitement pour les modèles 
+Skip-gram a des meilleurs résultats sur des mots rares. Ces modèles 
+seuls sont devenus dépassé, mais ils servent toujours comme un prétraitement pour les modèles 
 d'apprentissage profond actuels, comme les transformeurs qui représentent actuellement l'état 
 de l'art.  
 
